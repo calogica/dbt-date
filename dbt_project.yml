@@ -1,0 +1,19 @@
+name: 'dbt_date'
+version: '0.1'
+
+target-path: "target"
+clean-targets: ["target", "dbt_modules"]
+macro-paths: ["macros"]
+log-path: "logs"
+
+require-dbt-version: ">=0.14.0"
+
+profile: dw-snow
+
+quoting:
+    identifier: false
+    schema: false
+
+models:
+    vars:
+        'dbt_date:time_zone': 'America/Los_Angeles'
