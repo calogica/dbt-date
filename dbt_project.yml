@@ -8,8 +8,6 @@ log-path: "logs"
 
 require-dbt-version: ">=0.14.0"
 
-profile: dw-snow
-
 quoting:
     identifier: false
     schema: false
