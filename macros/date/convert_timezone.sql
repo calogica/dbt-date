@@ -1,6 +1,6 @@
 {% macro convert_timezone(column, target_tz=None, source_tz=None) %}
-{%- set target_tz = var("dbt_extend:time_zone") if not target_tz else target_tz -%}
-{{ adapter_macro('dbt_extend.convert_timezone', column, target_tz, source_tz) }}
+{%- set target_tz = var("dbt_date:time_zone") if not target_tz else target_tz -%}
+{{ adapter_macro('dbt_date.convert_timezone', column, target_tz, source_tz) }}
 {% endmacro %}
 
 {% macro default__convert_timezone(column, target_tz=None, source_tz=None) %}
