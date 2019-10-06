@@ -1,0 +1,15 @@
+{% macro get_base_dates(start_date, end_date) %}
+with dates as
+(
+    {{ dbt_utils.date_spine(
+        datepart="day",
+        start_date="cast('" ~ start_date ~ "' as datetime)",
+        end_date="cast('" ~ end_date ~ "' as datetime)",
+       )
+    }}
+)
+select
+    d.date_day
+from
+    dates d
+{% endmacro %}

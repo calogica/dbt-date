@@ -3,7 +3,7 @@
 {{ adapter_macro('dbt_date.convert_timezone', column, target_tz, source_tz) }}
 {% endmacro %}
 
-{% macro default__convert_timezone(column, target_tz=None, source_tz=None) %}
+{% macro default__convert_timezone(column, target_tz, source_tz) %}
     {%- if not source_tz -%}
     cast(convert_timezone('{{ target_tz }}', {{ column }}) as {{ dbt_utils.type_timestamp() }})
     {%- else -%}
@@ -11,6 +11,6 @@
     {%- endif -%}
 {% endmacro %}
 
-{% macro bigquery__convert_timezone(column, target_tz=None, source_tz=None) %}
+{% macro bigquery__convert_timezone(column, target_tz, source_tz=None) %}
     datetime({{ column }}, '{{ target_tz}}')
 {% endmacro %}
