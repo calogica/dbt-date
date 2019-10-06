@@ -7,7 +7,7 @@ macro-paths: ["macros"]
 log-path: "logs"
 
 require-dbt-version: ">=0.14.0"
-
+profile: dev
 quoting:
     identifier: false
     schema: false

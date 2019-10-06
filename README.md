@@ -21,6 +21,18 @@ For example, use `America/New_York` for East Coast Time.
 
 ## Macros
 
+### Date Dimension
+
+#### get_date_dimension ([source](macros/get_date_dimension.sql))
+Returns query to build date dimension from/to specified dates, including a number of useful columns based on each date.
+See the [example model](models/examples/dim_date.sql) for details.
+
+Usage:
+
+```python
+{{ dbt_date.get_date_dimension('2015-01-01', '2022-12-31') }}
+```
+
 ### Date
 
 #### convert_timezone ([source](macros/date/convert_timezone.sql))
@@ -50,19 +62,47 @@ Using named parameters, we can also specify the source only and rely on the conf
 {{ dbt_date.convert_timezone('my_column', source_tz='UTC') }}
 ```
 
-#### now ([source](macros/date/now.sql))
-Gets time based on local timezone (specified). Default is "America/Los_Angeles".
+#### date_part ([source](macros/date/date_part.sql))
+Extracts date parts from date.
 
 Usage:
 
 ```python
-{{ dbt_date.now() }}
+{{ dbt_date.date_part('dayofweek', 'date_day') }} as day_of_week
 ```
 
-or, specify a timezone:
+#### day_name ([source](macros/date/day_name.sql))
+Extracts name of weekday from date.
+
+Usage:
 
 ```python
-{{ dbt_date.now('America/New_York') }}
+{{ dbt_date.day_name('date_day', short=true) }} as day_of_week_short_name,
+{{ dbt_date.day_name('date_day', short=false) }} as day_of_week_long_name
+```
+
+#### last_week ([source](macros/date/last_week.sql))
+Convenience function to get the start date of last week
+
+Wraps:
+```python
+{{ dbt_date.n_weeks_ago(1, tz) }}
+```
+
+Usage:
+```python
+{{ dbt_date.last_week()) }}
+```
+```python
+{{ dbt_date.last_week(tz='America/New_York)) }}
+```
+
+#### month_name ([source](macros/date/month_name.sql))
+Extracts name of month from date.
+
+```python
+{{ dbt_date.month_name('date_day', short=true) }} as month_short_name,
+{{ dbt_date.month_name('date_day', short=false) }} as month_long_name
 ```
 
 #### n_days_ago ([source](macros/date/n_days_ago.sql))
@@ -117,6 +157,21 @@ Usage:
 
 ```python
 {{ dbt_date.n_weeks_away(4) }}
+```
+
+#### now ([source](macros/date/now.sql))
+Gets time based on local timezone (specified). Default is "America/Los_Angeles".
+
+Usage:
+
+```python
+{{ dbt_date.now() }}
+```
+
+or, specify a timezone:
+
+```python
+{{ dbt_date.now('America/New_York') }}
 ```
 
 #### periods_since ([source](macros/date/periods_since.sql))
