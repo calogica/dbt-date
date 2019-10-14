@@ -12,9 +12,13 @@ fscl_year_w13 as (
         f.*,
         -- We count the weeks in a 13 week period
         -- and separate the 4-5-4 week sequences
-        mod(cast((f.fiscal_week_of_year-1) as {{ dbt_utils.type_int() }}), 13) as w13_number,
+        mod(cast(
+            (f.fiscal_week_of_year-1) as {{ dbt_utils.type_int() }}
+            ), 13) as w13_number,
         -- Chop weeks into 13 week merch quarters
-        least(trunc((f.fiscal_week_of_year-1)/13.0),3) as quarter_number
+        least(
+            floor((f.fiscal_week_of_year-1)/13.0)
+            , 3) as quarter_number
     from
         fscl_year_dates_for_periods f
 
