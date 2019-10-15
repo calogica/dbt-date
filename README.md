@@ -33,6 +33,19 @@ Usage:
 {{ dbt_date.get_date_dimension('2015-01-01', '2022-12-31') }}
 ```
 
+### Fiscal Periods
+
+#### get_fiscal_periods ([source](macros/fiscal_date/get_fiscal_periods.sql))
+Returns query to build a fiscal period calendar based on the 4-5-4 week retail period concept.
+See the [example model](models/examples/dim_date_fiscal.sql) for details and this [blog post](https://calogica.com/sql/dbt/2018/11/15/retail-calendar-in-sql.html) for more context on custom business calendars.
+
+Usage:
+
+```python
+{{ dbt_date.get_fiscal_periods(ref('dates'), year_end_month, week_start_day) }}
+```
+Note: the first parameter expects a dbt `ref` variable, i.e. a reference to a model containing the necessary date dimension attributes, which can be generated via the `get_date_dimension` macro (see above).
+
 ### Date
 
 #### convert_timezone ([source](macros/date/convert_timezone.sql))
@@ -197,6 +210,19 @@ Usage:
 
 ```python
 {{ dbt_date.this_week() }}
+```
+
+#### to_unixtimestamp ([source](macros/date/to_unixtimestamp.sql))
+Gets Unix timestamp (epochs) based on provided timestamp.
+
+Usage:
+
+```python
+{{ dbt_date.to_unixtimestamp('my_timestamp_column') }}
+```
+
+```python
+{{ dbt_date.to_unixtimestamp(dbt_date.now()) }}
 ```
 
 #### today ([source](macros/date/today.sql))
