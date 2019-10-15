@@ -8,7 +8,7 @@ Include in `packages.yml`
 ```
 packages:
   - git: "https://github.com/calogica/dbt-date.git"
-    revision: 0.1.3
+    revision: 0.1.4 (or whatever the latest release is)
 ```
 
 ## Variables
