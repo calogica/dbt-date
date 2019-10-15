@@ -48,7 +48,7 @@ Note: the first parameter expects a dbt `ref` variable, i.e. a reference to a mo
 
 ### Date
 
-#### convert_timezone ([source](macros/date/convert_timezone.sql))
+#### convert_timezone ([source](macros/calendar_date/convert_timezone.sql))
 Cross-database implemention of convert_timezone function.
 
 Usage:
@@ -75,7 +75,7 @@ Using named parameters, we can also specify the source only and rely on the conf
 {{ dbt_date.convert_timezone('my_column', source_tz='UTC') }}
 ```
 
-#### date_part ([source](macros/date/date_part.sql))
+#### date_part ([source](macros/calendar_date/date_part.sql))
 Extracts date parts from date.
 
 Usage:
@@ -84,7 +84,7 @@ Usage:
 {{ dbt_date.date_part('dayofweek', 'date_day') }} as day_of_week
 ```
 
-#### day_name ([source](macros/date/day_name.sql))
+#### day_name ([source](macros/calendar_date/day_name.sql))
 Extracts name of weekday from date.
 
 Usage:
@@ -94,7 +94,7 @@ Usage:
 {{ dbt_date.day_name('date_day', short=false) }} as day_of_week_long_name
 ```
 
-#### last_week ([source](macros/date/last_week.sql))
+#### last_week ([source](macros/calendar_date/last_week.sql))
 Convenience function to get the start date of last week
 
 Wraps:
@@ -110,7 +110,7 @@ Usage:
 {{ dbt_date.last_week(tz='America/New_York)) }}
 ```
 
-#### month_name ([source](macros/date/month_name.sql))
+#### month_name ([source](macros/calendar_date/month_name.sql))
 Extracts name of month from date.
 
 ```python
@@ -118,7 +118,7 @@ Extracts name of month from date.
 {{ dbt_date.month_name('date_day', short=false) }} as month_long_name
 ```
 
-#### n_days_ago ([source](macros/date/n_days_ago.sql))
+#### n_days_ago ([source](macros/calendar_date/n_days_ago.sql))
 Gets date _n_ days ago, based on local date.
 
 Usage:
@@ -127,7 +127,7 @@ Usage:
 {{ dbt_date.n_days_ago(7) }}
 ```
 
-#### n_days_away ([source](macros/date/n_days_away.sql))
+#### n_days_away ([source](macros/calendar_date/n_days_away.sql))
 Gets date _n_ days away, based on local date.
 
 Usage:
@@ -136,7 +136,7 @@ Usage:
 {{ dbt_date.n_days_away(7) }}
 ```
 
-#### n_months_ago ([source](macros/date/n_months_ago.sql))
+#### n_months_ago ([source](macros/calendar_date/n_months_ago.sql))
 Gets date _n_ months ago, based on local date.
 
 Usage:
@@ -145,7 +145,7 @@ Usage:
 {{ dbt_date.n_months_ago(12) }}
 ```
 
-#### n_months_away ([source](macros/date/n_months_away.sql))
+#### n_months_away ([source](macros/calendar_date/n_months_away.sql))
 Gets date _n_ months ago, based on local date.
 
 Usage:
@@ -154,7 +154,7 @@ Usage:
 {{ dbt_date.n_months_away(12) }}
 ```
 
-#### n_weeks_ago ([source](macros/date/n_weeks_ago.sql))
+#### n_weeks_ago ([source](macros/calendar_date/n_weeks_ago.sql))
 Gets date _n_ weeks ago, based on local date.
 
 Usage:
@@ -163,7 +163,7 @@ Usage:
 {{ dbt_date.n_weeks_ago(4) }}
 ```
 
-#### n_weeks_away ([source](macros/date/n_weeks_away.sql))
+#### n_weeks_away ([source](macros/calendar_date/n_weeks_away.sql))
 Gets date _n_ weeks from now, based on local date.
 
 Usage:
@@ -172,7 +172,7 @@ Usage:
 {{ dbt_date.n_weeks_away(4) }}
 ```
 
-#### now ([source](macros/date/now.sql))
+#### now ([source](macros/calendar_date/now.sql))
 Gets time based on local timezone (specified). Default is "America/Los_Angeles".
 
 Usage:
@@ -187,7 +187,7 @@ or, specify a timezone:
 {{ dbt_date.now('America/New_York') }}
 ```
 
-#### periods_since ([source](macros/date/periods_since.sql))
+#### periods_since ([source](macros/calendar_date/periods_since.sql))
 Returns the number of periods since a specified date.
 
 Usage:
@@ -203,7 +203,7 @@ Alternatively, a timezone can be specified via the `tz` parameter:
 {{ dbt_date.periods_since('my_timestamp_column', period_name='minute', tz='UTC' }}
 ```
 
-#### this_week ([source](macros/date/this_week.sql))
+#### this_week ([source](macros/calendar_date/this_week.sql))
 Gets current week start date, based on local date.
 
 Usage:
@@ -212,7 +212,7 @@ Usage:
 {{ dbt_date.this_week() }}
 ```
 
-#### to_unixtimestamp ([source](macros/date/to_unixtimestamp.sql))
+#### to_unixtimestamp ([source](macros/calendar_date/to_unixtimestamp.sql))
 Gets Unix timestamp (epochs) based on provided timestamp.
 
 Usage:
@@ -225,7 +225,7 @@ Usage:
 {{ dbt_date.to_unixtimestamp(dbt_date.now()) }}
 ```
 
-#### today ([source](macros/date/today.sql))
+#### today ([source](macros/calendar_date/today.sql))
 Gets date based on local timezone (specified). Package default is "America/Los_Angeles". The default must be specified in `dbt_project.yml`, in the `'dbt_date:time_zone'` variable. e.g `'dbt_date:time_zone': 'America/New_York'`.
 
 Usage:
@@ -239,7 +239,7 @@ or, specify a timezone:
 {{ dbt_date.today('America/New_York') }}
 ```
 
-#### tomorrow ([source](macros/date/tomorrow.sql))
+#### tomorrow ([source](macros/calendar_date/tomorrow.sql))
 Gets tomorrow's date, based on local date.
 
 Usage:
@@ -253,7 +253,7 @@ or, specify a timezone:
 {{ dbt_date.tomorrow('America/New_York') }}
 ```
 
-#### yesterday ([source](macros/date/yesterday.sql))
+#### yesterday ([source](macros/calendar_date/yesterday.sql))
 Gets yesterday's date, based on local date.
 
 Usage:
