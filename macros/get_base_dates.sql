@@ -1,5 +1,5 @@
 {% macro get_base_dates(start_date, end_date) %}
-with dates as
+with date_spine as
 (
     {{ dbt_utils.date_spine(
         datepart="day",
@@ -11,5 +11,5 @@ with dates as
 select
     d.date_day
 from
-    dates d
+    date_spine d
 {% endmacro %}
