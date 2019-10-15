@@ -1,6 +1,7 @@
 {{
     config(
-        materialized = 'table'
+        materialized = 'table',
+        enabled = false
     )
 }}
 with date_dimension as (
