@@ -9,7 +9,7 @@ with date_spine as
     }}
 )
 select
-    d.date_day
+    d.day_date
 from
     date_spine d
 {% endmacro %}
