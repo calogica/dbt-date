@@ -1,5 +1,5 @@
 {% macro get_date_dimension(start_date, end_date) %}
-{{ adapter_macro('dbt_date.get_date_dimension', start_date, end_date) }}
+    {{ adapter.dispatch('get_date_dimension', packages = dbt_date._get_utils_namespaces()) (start_date, end_date) }}
 {% endmacro %}
 
 {% macro default__get_date_dimension(start_date, end_date) %}
