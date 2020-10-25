@@ -1,5 +1,5 @@
 {% macro get_fiscal_year_dates(dates, year_end_month=12, week_start_day=1, shift_year=1) %}
-{{ adapter_macro('dbt_date.get_fiscal_year_dates', dates, year_end_month, week_start_day, shift_year) }}
+{{ adapter.dispatch('get_fiscal_year_dates', packages = dbt_date._get_utils_namespaces()) (dates, year_end_month, week_start_day, shift_year) }}
 {% endmacro %}
 
 {% macro default__get_fiscal_year_dates(dates, year_end_month, week_start_day, shift_year) %}
