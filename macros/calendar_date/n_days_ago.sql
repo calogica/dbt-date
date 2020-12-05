@@ -1,4 +1,5 @@
-{%- macro n_days_ago(n, tz=None) -%}
+{%- macro n_days_ago(n, date=None, tz=None) -%}
+{%-set dt = date if date else dbt_date.today(tz) -%}
 {%- set n = n|int -%}
-{{ dbt_utils.dateadd('day', -1 * n, dbt_date.today(tz)) }}
+cast({{ dbt_utils.dateadd('day', -1 * n, dt) }} as date)
 {%- endmacro -%}

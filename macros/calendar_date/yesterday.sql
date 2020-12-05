@@ -1,3 +1,3 @@
-{%- macro yesterday(tz=None) -%}
-{{ dbt_utils.dateadd('day', -1, dbt_date.today(tz)) }}
+{%- macro yesterday(date=None, tz=None) -%}
+{{ dbt_date.n_days_ago(1, date, tz) }}
 {%- endmacro -%}

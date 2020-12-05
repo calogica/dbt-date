@@ -1,3 +1,3 @@
-{%- macro this_week(tz=None) -%}
-{{ dbt_utils.date_trunc('week', dbt_date.today(tz)) }}
+{%- macro this_week(date=None, tz=None) -%}
+{{ dbt_utils.this_week_start(date, tz) }}
 {%- endmacro -%}
