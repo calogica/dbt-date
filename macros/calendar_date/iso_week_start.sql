@@ -12,6 +12,6 @@ cast({{ dbt_utils.date_trunc(week_type, date) }} as date)
 {%- endmacro %}
 
 {%- macro snowflake__iso_week_start(date) -%}
-{{ dbt_date._iso_week_start(date, 'weekiso') }}
+{{ dbt_date._iso_week_start(date, 'week') }}
 {%- endmacro %}
 

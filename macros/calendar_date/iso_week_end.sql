@@ -5,7 +5,7 @@
 
 {%- macro _iso_week_end(date, week_type) -%}
 {%- set dt = dbt_date.iso_week_start(date) -%}
-{{ dbt_date.n_days_away(7, dt) }}
+{{ dbt_date.n_days_away(6, dt) }}
 {%- endmacro %}
 
 {%- macro default__iso_week_end(date) -%}
