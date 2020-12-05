@@ -1,9 +1,3 @@
-{{
-    config(
-        materialized = 'table',
-        enabled = false
-    )
-}}
 with date_dimension as (
     select * from {{ ref('dates') }}
 ),
