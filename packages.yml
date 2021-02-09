@@ -1,5 +1,5 @@
 packages:
-  - package: fishtown-analytics/dbt_utils
-    version: [">=0.6.0", "<0.7.0"]
+  - git: https://github.com/seunghanhong/dbt-utils.git
+    revision: 'feature/postgres_quarter'
   - package: fishtown-analytics/spark_utils
     version: 0.1.0
