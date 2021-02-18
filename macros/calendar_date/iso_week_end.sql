@@ -9,10 +9,10 @@
 {%- endmacro %}
 
 {%- macro default__iso_week_end(date) -%}
-{{ dbt_date._iso_week_end(date, 'isoweek') }}
+{{ dbt_date._iso_week_end(date, 'week') }}
 {%- endmacro %}
 
 {%- macro snowflake__iso_week_end(date) -%}
-{{ dbt_date._iso_week_end(date, 'weekiso') }}
+{{ dbt_date._iso_week_end(date, 'week') }}
 {%- endmacro %}
 
