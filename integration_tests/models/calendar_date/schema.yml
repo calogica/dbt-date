@@ -1,0 +1,145 @@
+version: 2
+models:
+  - name: test_convert_timezone
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_date_part
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_day_name
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_day_of_month
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_day_of_week
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_day_of_year
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_iso_week_end
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_iso_week_of_year
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_iso_week_start
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_last_month
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_month_name
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_n_days_ago
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_n_days_away
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_week_end
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_week_of_year
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
+
+  - name: test_week_start
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "actual = expected"
+    columns:
+      - name: actual
+        tests:
+          - not_null
