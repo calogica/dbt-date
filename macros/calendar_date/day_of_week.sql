@@ -33,7 +33,7 @@
 
     
     
-    {%- endmacro %}
+{%- endmacro %}
 
 {%- macro bigquery__day_of_week(date, isoweek) -%}
 
@@ -52,3 +52,16 @@
 {%- endmacro %}
 
 
+{%- macro postgres__day_of_week(date, isoweek) -%}
+
+    {%- if isoweek -%}
+        {%- set dow_part = 'isodow' -%}
+        -- Monday(1) to Sunday (7)
+        cast({{ dbt_date.date_part(dow_part, date) }} as {{ dbt_utils.type_int() }})
+    {%- else -%}
+        {%- set dow_part = 'dow' -%}
+        -- Sunday(1) to Saturday (7)
+        cast({{ dbt_date.date_part(dow_part, date) }} + 1 as {{ dbt_utils.type_int() }})
+    {%- endif -%}
+
+{%- endmacro %}

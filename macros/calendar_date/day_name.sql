@@ -29,3 +29,9 @@
 {%- set f = '%a' if short else '%A' -%}
     format_date('{{ f }}', cast({{ date }} as date))
 {%- endmacro %}
+
+{%- macro postgres__day_name(date, short) -%}
+{# FM = Fill mode, which suppresses padding blanks #}
+{%- set f = 'FMDy' if short else 'FMDay' -%}
+    to_char({{ date }}, '{{ f }}')
+{%- endmacro %}

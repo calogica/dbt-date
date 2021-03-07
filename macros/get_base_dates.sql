@@ -2,8 +2,8 @@
 with date_spine as
 (
     {% if start_date and end_date %}
-    {%- set start_date="cast('" ~ start_date ~ "' as datetime)" -%}
-    {%- set end_date="cast('" ~ end_date ~ "' as datetime)"  -%}
+    {%- set start_date="cast('" ~ start_date ~ "' as " ~ dbt_utils.type_timestamp() ~ ")" -%}
+    {%- set end_date="cast('" ~ end_date ~ "' as " ~ dbt_utils.type_timestamp() ~ ")"  -%}
 
     {% elif n_dateparts and datepart %}
 

@@ -6,4 +6,6 @@
     {{ dbt_date.date_part('dayofyear', date) }}
 {%- endmacro %}
 
-
+{%- macro postgres__day_of_year(date) -%}
+    {{ dbt_date.date_part('doy', date) }}
+{%- endmacro %}
