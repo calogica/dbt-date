@@ -13,6 +13,9 @@ cast(convert_timezone('{{ source_tz }}', '{{ target_tz }}', {{ column }}) as {{ 
 {%- endmacro -%}
 
 {%- macro bigquery__convert_timezone(column, target_tz, source_tz=None) -%}
+{%- if execute and source_tz != "UTC" %}
+{{ exceptions.raise_compiler_error("BigQuery does not support converting timestamps from a timezone other than UTC. Got: " ~ source_tz) }}
+{% endif -%}
 timestamp(datetime({{ column }}, '{{ target_tz}}'))
 {%- endmacro -%}
 
