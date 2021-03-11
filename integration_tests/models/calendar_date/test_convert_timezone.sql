@@ -1,9 +1,5 @@
-{# We get the timezones conversions to test for each platform #}
-{%- if target.name == "bq" %}
-{% set rel = ref("data_convert_timezone_bq") %}
-{%- else %}
-{% set rel = ref("data_convert_timezone") %}
-{%- endif -%}
+-- depends_on: {{ ref("data_convert_timezone") }}
+{% set rel = get_platform_relation("data_convert_timezone") %}
 
 {% set timezones_query %}
 select distinct source_tz, target_tz
