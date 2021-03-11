@@ -1,40 +1,29 @@
+{# We get the timezones conversions to test for each platform #}
+{%- if target.name == "bq" %}
+{% set rel = ref("data_convert_timezone_bq") %}
+{%- else %}
+{% set rel = ref("data_convert_timezone") %}
+{%- endif -%}
+
+{% set timezones_query %}
+select distinct source_tz, target_tz
+from {{ rel }}
+{% endset %}
+
+{% set tz_conversions = run_query(timezones_query) %}
 
 with data as (
-
-    select * from {{ ref('data_convert_timezone') }}
-
+    select * from {{ rel }}
 )
-
+{%- for tz_conversion in tz_conversions %}
 select
-    {# UTC to America/Los_Angeles #}
-    {{ dbt_date.convert_timezone('date_day') }} as actual,
-    var_tz as expected
+    source_ts,
+    source_tz || ' to ' || target_tz as test_case,
+    {{ dbt_date.convert_timezone('source_ts', source_tz=tz_conversion[0], target_tz=tz_conversion[1]) }} as actual,
+    target_ts as expected
 
 from data
+where source_tz = '{{ tz_conversion[0] }}' and target_tz = '{{ tz_conversion[1] }}'
+{% if not loop.last %}union all{% endif %}
 
-union all
-
-select
-    {# UTC to America/New_York #}
-    {{ dbt_date.convert_timezone('date_day', 'America/New_York') }} as actual,
-    target_tz as expected
-
-from data
-
-union all
-
-select
-    {# America/Los_Angeles to America/New_York #}
-    {{ dbt_date.convert_timezone('date_day', 'America/New_York', 'America/Los_Angeles') }} as actual,
-    source_tz as expected
-
-from data
-
-union all
-
-select
-    {# America/New_York to America/Los_Angeles #}
-    {{ dbt_date.convert_timezone('date_day', source_tz='America/New_York') }} as actual,
-    var_source_tz as expected
-
-from data
+{% endfor %}

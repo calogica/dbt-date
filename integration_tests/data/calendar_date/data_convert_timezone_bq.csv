@@ -1,5 +1,3 @@
 source_ts,source_tz,target_tz,target_ts
 2019-01-01 14:00:00,"UTC","America/Los_Angeles",2019-01-01 06:00:00
 2019-01-01 14:00:00,"UTC","America/New_York", 2019-01-01 09:00:00
-2019-01-01 14:00:00,"America/Los_Angeles","America/New_York",2019-01-01 17:00:00
-2019-01-01 14:00:00,"America/New_York","America/Los_Angeles",2019-01-01 11:00:00

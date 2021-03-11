@@ -30,6 +30,20 @@ quoting:
     identifier: false
     schema: false
 
+seeds:
+
+  dbt_date_integration_tests:
+    schema: dbt_date_integration_tests
+    calendar_date:
+        data_convert_timezone:
+          +column_types:
+            source_ts: timestamp
+            target_ts: timestamp
+        data_convert_timezone_bq:
+          +column_types:
+            source_ts: timestamp
+            target_ts: timestamp
+
 models:
     schema: dbt_date_integration_tests
     materialized: table
