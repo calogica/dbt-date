@@ -81,15 +81,6 @@ models:
         tests:
           - not_null
 
-  - name: test_last_month
-    tests:
-      - dbt_utils.expression_is_true:
-          expression: "actual = expected"
-    columns:
-      - name: actual
-        tests:
-          - not_null
-
   - name: test_month_name
     tests:
       - dbt_utils.expression_is_true:
