@@ -9,3 +9,7 @@
 {% macro bigquery__date_part(datepart, date) -%}
     extract({{ datepart }} from {{ date }})
 {%- endmacro %}
+
+{% macro sqlserver__date_part(datepart, date) -%}
+    datepart({{ datepart }}, {{ date }})
+{%- endmacro %}

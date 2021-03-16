@@ -35,3 +35,8 @@
 {%- set f = 'FMDy' if short else 'FMDay' -%}
     to_char({{ date }}, '{{ f }}')
 {%- endmacro %}
+
+{%- macro sqlserver__day_name(date, short) -%}
+{%- set f = 'ddd' if short else 'dddd' -%}
+    format({{ date }}, '{{ f }}')
+{%- endmacro %}

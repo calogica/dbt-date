@@ -18,3 +18,7 @@ cast({{ dbt_utils.date_trunc(week_type, date) }} as date)
 {%- macro postgres__iso_week_start(date) -%}
 {{ dbt_date._iso_week_start(date, 'week') }}
 {%- endmacro %}
+
+{%- macro sqlserver__iso_week_start(date) -%}
+{{ dbt_date._iso_week_start(date, 'iso_week') }}
+{%- endmacro %}

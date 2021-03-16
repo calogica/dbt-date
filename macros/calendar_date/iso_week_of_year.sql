@@ -19,3 +19,7 @@ cast({{ dbt_date.date_part(week_type, date) }} as {{ dbt_utils.type_int() }})
 -- postgresql week is isoweek, the first week of a year containing January 4 of that year.
 {{ dbt_date._iso_week_of_year(date, 'week') }}
 {%- endmacro %}
+
+{%- macro sqlserver__iso_week_of_year(date) -%}
+{{ dbt_date._iso_week_of_year(date, 'iso_week') }}
+{%- endmacro %}
