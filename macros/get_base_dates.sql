@@ -20,7 +20,7 @@ with date_spine as
 
 )
 select
-    date(d.date_day) as date_day
+    cast(d.date_day as date) as date_day
 from
     date_spine d
 {% endmacro %}
