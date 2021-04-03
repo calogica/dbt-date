@@ -2,7 +2,7 @@
     {{ adapter.dispatch('get_base_dates', packages = dbt_date._get_utils_namespaces()) (start_date, end_date, n_dateparts, datepart) }}
 {% endmacro %}
 
-{% macro default__get_base_dates(start_date=None, end_date=None, n_dateparts=None, datepart=None) %}
+{% macro default__get_base_dates(start_date, end_date, n_dateparts, datepart) %}
 with date_spine as
 (
     {% if start_date and end_date %}
@@ -29,7 +29,7 @@ from
     date_spine d
 {% endmacro %}
 
-{% macro bigquery__get_base_dates(start_date=None, end_date=None, n_dateparts=None, datepart=None) %}
+{% macro bigquery__get_base_dates(start_date, end_date, n_dateparts, datepart) %}
 with date_spine as
 (
     {% if start_date and end_date %}
