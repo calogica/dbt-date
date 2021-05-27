@@ -3,9 +3,9 @@
 {%- endmacro %}
 
 {%- macro default__day_of_year(date) -%}
-    {{ dbt_date.date_part('dayofyear', date) }}
+    cast({{ dbt_date.date_part('dayofyear', date) }} as {{ dbt_utils.type_int() }})
 {%- endmacro %}
 
 {%- macro postgres__day_of_year(date) -%}
-    {{ dbt_date.date_part('doy', date) }}
+    cast({{ dbt_date.date_part('doy', date) }} as {{ dbt_utils.type_int() }})
 {%- endmacro %}
