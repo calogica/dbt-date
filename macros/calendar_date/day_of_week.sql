@@ -10,10 +10,10 @@
     case
         -- Shift start of week from Sunday (0) to Monday (1)
         when {{ dow }} = 0 then 7
-        else {{ dow }}
+        else cast({{ dow }} as {{ dbt_utils.type_int() }})
     end
     {%- else -%}
-    {{ dow }} + 1
+    cast({{ dow }} + 1 as {{ dbt_utils.type_int() }})
     {%- endif -%}
 
 {%- endmacro %}
@@ -25,14 +25,14 @@
         {{ dbt_date.date_part(dow_part, date) }}
     {%- else -%}
         {%- set dow_part = 'dayofweek' -%}
-        case 
+        case
             when {{ dbt_date.date_part(dow_part, date) }} = 7 then 1
             else {{ dbt_date.date_part(dow_part, date) }} + 1
         end
     {%- endif -%}
 
-    
-    
+
+
 {%- endmacro %}
 
 {%- macro bigquery__day_of_week(date, isoweek) -%}
