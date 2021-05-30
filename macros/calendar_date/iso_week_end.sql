@@ -3,16 +3,11 @@
 {{ adapter.dispatch('iso_week_end', packages = dbt_date._get_utils_namespaces()) (dt) }}
 {%- endmacro -%}
 
-{%- macro _iso_week_end(date, week_type) -%}
+{%- macro _iso_week_end(date) -%}
 {%- set dt = dbt_date.iso_week_start(date) -%}
 {{ dbt_date.n_days_away(6, dt) }}
 {%- endmacro %}
 
 {%- macro default__iso_week_end(date) -%}
-{{ dbt_date._iso_week_end(date, 'isoweek') }}
+{{ dbt_date._iso_week_end(date) }}
 {%- endmacro %}
-
-{%- macro snowflake__iso_week_end(date) -%}
-{{ dbt_date._iso_week_end(date, 'weekiso') }}
-{%- endmacro %}
-
