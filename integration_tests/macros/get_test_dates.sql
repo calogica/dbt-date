@@ -46,7 +46,6 @@ select
 {%- endmacro %}
 
 {% macro default__get_test_week_of_year() -%}
-    {{ log("in default macro", info=True) }}
     {# weeks_of_year for '2020-11-29' and '2020-12-01', respectively #}
     {{ return([48,48]) }}
 {%- endmacro %}
