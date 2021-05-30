@@ -20,6 +20,7 @@ clean-targets:
 require-dbt-version: ">=0.18.1"
 
 vars:
+    dbt_date_dispatch_list: ['dbt_date_integration_tests']
     "dbt_date:time_zone": "America/Los_Angeles"
 
 quoting:

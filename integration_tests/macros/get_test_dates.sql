@@ -42,7 +42,7 @@ select
 {%- endmacro %}
 
 {% macro get_test_week_of_year() -%}
-    {{ return(adapter.dispatch('get_test_week_of_year', packages = dbt_date_integration_tests._get_utils_namespaces()) ()) }}
+    {{ return(adapter.dispatch('get_test_week_of_year', packages = dbt_date._get_utils_namespaces()) ()) }}
 {%- endmacro %}
 
 {% macro default__get_test_week_of_year() -%}
