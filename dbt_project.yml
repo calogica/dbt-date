@@ -18,7 +18,3 @@ quoting:
 vars:
     'dbt_date:time_zone': 'America/Los_Angeles'
 
-models:
-    dbt_date:
-        example_models:
-            enabled: false
