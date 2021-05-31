@@ -3,17 +3,14 @@
 {% endmacro %}
 
 {% macro default__get_date_dimension(start_date, end_date) %}
-with base_dates as (
-    {{ dbt_date.get_base_dates(start_date, end_date) }}
-),
-dates_with_prior_year_dates as (
+with dates_with_prior_year_dates as (
 
     select
         cast(d.date_day as date) as date_day,
         cast({{ dbt_utils.dateadd('year', -1 , 'd.date_day') }} as date) as prior_year_date_day,
         cast({{ dbt_utils.dateadd('day', -364 , 'd.date_day') }} as date) as prior_year_over_year_date_day
     from
-    	base_dates d
+    	( {{ dbt_date.get_base_dates(start_date, end_date) }} ) d
 
 )
 select
