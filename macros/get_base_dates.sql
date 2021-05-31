@@ -1,4 +1,4 @@
-{% macro get_base_dates(start_date=None, end_date=None, n_dateparts=None, datepart=None) %}
+{% macro get_base_dates(start_date=None, end_date=None, n_dateparts=None, datepart="day") %}
     {{ adapter.dispatch('get_base_dates', packages = dbt_date._get_utils_namespaces()) (start_date, end_date, n_dateparts, datepart) }}
 {% endmacro %}
 
@@ -16,7 +16,7 @@ with date_spine as
     {% endif %}
 
     {{ dbt_utils.date_spine(
-        datepart="day",
+        datepart=datepart,
         start_date=start_date,
         end_date=end_date,
        )
@@ -24,7 +24,7 @@ with date_spine as
 
 )
 select
-    cast(d.date_day as date) as date_day
+    cast(d.date_{{ datepart }} as {{ dbt_utils.type_timestamp() }}) as date_{{ datepart }}
 from
     date_spine d
 {% endmacro %}
@@ -43,7 +43,7 @@ with date_spine as
     {% endif %}
 
     {{ dbt_utils.date_spine(
-        datepart="day",
+        datepart=datepart,
         start_date=start_date,
         end_date=end_date,
        )
@@ -51,7 +51,7 @@ with date_spine as
 
 )
 select
-    cast(d.date_day as date) as date_day
+    cast(d.date_{{ datepart }} as {{ dbt_utils.type_timestamp() }}) as date_{{ datepart }}
 from
     date_spine d
 {% endmacro %}
