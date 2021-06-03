@@ -22,8 +22,8 @@ select
     {{ dbt_date.tomorrow('d.date_day') }} as next_date_day,
     d.prior_year_date_day as prior_year_date_day,
     d.prior_year_over_year_date_day,
-    {{ dbt_date.day_of_week('d.date_day', isoweek=true) }} as day_of_week,
-
+    {{ dbt_date.day_of_week('d.date_day', isoweek=false) }} as day_of_week,
+    {{ dbt_date.day_of_week('d.date_day', isoweek=true) }} as day_of_week_iso,
     {{ dbt_date.day_name('d.date_day', short=false) }} as day_of_week_name,
     {{ dbt_date.day_name('d.date_day', short=true) }} as day_of_week_name_short,
     {{ dbt_date.day_of_month('d.date_day') }} as day_of_month,

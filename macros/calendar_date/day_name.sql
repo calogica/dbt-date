@@ -12,14 +12,14 @@
     dayname({{ date }})
     {%- else -%}
     -- long version not implemented on Snowflake so we're doing it manually :/
-    case {{ dbt_date.day_of_week(date) }}
-        when 1 then 'Monday'
-        when 2 then 'Tuesday'
-        when 3 then 'Wednesday'
-        when 4 then 'Thursday'
-        when 5 then 'Friday'
-        when 6 then 'Saturday'
-        when 7 then 'Sunday'
+    case dayname({{ date }})
+        when 'Mon' then 'Monday'
+        when 'Tue' then 'Tuesday'
+        when 'Wed' then 'Wednesday'
+        when 'Thu' then 'Thursday'
+        when 'Fri' then 'Friday'
+        when 'Sat' then 'Saturday'
+        when 'Sun' then 'Sunday'
     end
     {%- endif -%}
     
