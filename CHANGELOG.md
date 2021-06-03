@@ -5,9 +5,9 @@
 
 ## Fixes
 
-* Switched `day_of_week` column in `get_date_dimension` from ISO to *not* ISO to align with the rest of the package. [#33](https://github.com/calogica/dbt-date/pull/33)
-* Added `day_of_week_iso` column to `get_date_dimension` [#33](https://github.com/calogica/dbt-date/pull/33)
-
+* Switched `day_of_week` column in `get_date_dimension` from ISO to *not* ISO to align with the rest of the package. [#33](https://github.com/calogica/dbt-date/pull/33) (@davesgonechina)
+* Added `day_of_week_iso` column to `get_date_dimension` [#33](https://github.com/calogica/dbt-date/pull/33) (@davesgonechina)
+* Refactored Snowflake's `day_name` to not be ISO dependent [#33](https://github.com/calogica/dbt-date/pull/33) (@davesgonechina)
 
 # dbt-date v0.2.7
 
