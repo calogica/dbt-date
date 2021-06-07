@@ -41,8 +41,8 @@ select
     {{ dbt_date.iso_week_end('d.prior_year_over_year_date_day') }} as prior_year_iso_week_end_date,
     {{ dbt_date.iso_week_of_year('d.date_day') }} as iso_week_of_year,
 
-
-    cast({{ dbt_date.date_part('week', 'd.prior_year_over_year_date_day') }} as {{ dbt_utils.type_int() }}) as prior_year_week_of_year,
+    {{ dbt_date.week_of_year('d.prior_year_over_year_date_day') }} as prior_year_week_of_year,
+    {{ dbt_date.iso_week_of_year('d.prior_year_over_year_date_day') }} as prior_year_iso_week_of_year,
 
     cast({{ dbt_date.date_part('month', 'd.date_day') }} as {{ dbt_utils.type_int() }}) as month_of_year,
     {{ dbt_date.month_name('d.date_day', short=false) }}  as month_name,
@@ -105,8 +105,8 @@ select
     {{ dbt_date.iso_week_end('d.prior_year_over_year_date_day') }} as prior_year_iso_week_end_date,
     {{ dbt_date.iso_week_of_year('d.date_day') }} as iso_week_of_year,
 
-
-    cast({{ dbt_date.date_part('week', 'd.prior_year_over_year_date_day') }} as {{ dbt_utils.type_int() }}) as prior_year_week_of_year,
+    {{ dbt_date.week_of_year('d.prior_year_over_year_date_day') }} as prior_year_week_of_year,
+    {{ dbt_date.iso_week_of_year('d.prior_year_over_year_date_day') }} as prior_year_iso_week_of_year,
 
     cast({{ dbt_date.date_part('month', 'd.date_day') }} as {{ dbt_utils.type_int() }}) as month_of_year,
     {{ dbt_date.month_name('d.date_day', short=false) }}  as month_name,
