@@ -18,6 +18,6 @@ select
     f.fiscal_period_of_quarter
 from
     date_dimension d
-    left outer join
+    left join
     fiscal_periods f
         on d.date_day = f.date_day
