@@ -1,5 +1,5 @@
 {%- macro day_of_week(date, isoweek=true) -%}
-{{ adapter.dispatch('day_of_week', packages = dbt_date._get_utils_namespaces()) (date, isoweek) }}
+{{ adapter.dispatch('day_of_week', 'dbt_date') (date, isoweek) }}
 {%- endmacro %}
 
 {%- macro default__day_of_week(date, isoweek) -%}

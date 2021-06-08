@@ -1,9 +1,18 @@
 {%- macro from_unixtimestamp(epochs, format="seconds") -%}
-    {{ adapter.dispatch('from_unixtimestamp', packages = dbt_date._get_utils_namespaces()) (epochs, format) }}
+    {{ adapter.dispatch('from_unixtimestamp', 'dbt_date') (epochs, format) }}
+{%- endmacro %}
+
+{%- macro default__from_unixtimestamp(epochs, format="seconds") -%}
+    {%- if format != "seconds" -%}
+    {{ exceptions.raise_compiler_error(
+        "value " ~ format ~ " for `format` for from_unixtimestamp is not supported."
+        )
+    }}
+    {% endif -%}
+    to_timestamp({{ epochs }})
 {%- endmacro %}
 
 {%- macro snowflake__from_unixtimestamp(epochs, format) -%}
-    
     {%- if format == "seconds" -%}
     {%- set scale = 0 -%}
     {%- elif format == "milliseconds" -%}
@@ -13,10 +22,10 @@
     {%- else -%}
     {{ exceptions.raise_compiler_error(
         "value " ~ format ~ " for `format` for from_unixtimestamp is not supported."
-        ) 
+        )
     }}
-    to_timestamp_ntz({{ epochs }}, {{ scale }})
     {% endif -%}
+    to_timestamp_ntz({{ epochs }}, {{ scale }})
 
 {%- endmacro %}
 
@@ -30,7 +39,7 @@
     {%- else -%}
     {{ exceptions.raise_compiler_error(
         "value " ~ format ~ " for `format` for from_unixtimestamp is not supported."
-        ) 
+        )
     }}
     {% endif -%}
 {%- endmacro %}

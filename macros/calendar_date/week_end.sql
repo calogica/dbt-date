@@ -1,6 +1,6 @@
 {%- macro week_end(date=None, tz=None) -%}
 {%-set dt = date if date else dbt_date.today(tz) -%}
-{{ adapter.dispatch('week_end', packages = dbt_date._get_utils_namespaces()) (dt) }}
+{{ adapter.dispatch('week_end', 'dbt_date') (dt) }}
 {%- endmacro -%}
 
 {%- macro default__week_end(date) -%}

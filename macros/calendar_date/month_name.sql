@@ -1,5 +1,5 @@
 {%- macro month_name(date, short=True) -%}
-    {{ adapter.dispatch('month_name', packages = dbt_date._get_utils_namespaces()) (date, short) }}
+    {{ adapter.dispatch('month_name', 'dbt_date') (date, short) }}
 {%- endmacro %}
 
 {%- macro default__month_name(date, short) -%}
