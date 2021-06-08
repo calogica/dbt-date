@@ -1,6 +1,6 @@
 {%- macro iso_week_start(date=None, tz=None) -%}
 {%-set dt = date if date else dbt_date.today(tz) -%}
-{{ adapter.dispatch('iso_week_start', packages = dbt_date._get_utils_namespaces()) (dt) }}
+{{ adapter.dispatch('iso_week_start', 'dbt_date') (dt) }}
 {%- endmacro -%}
 
 {%- macro _iso_week_start(date, week_type) -%}

@@ -1,5 +1,5 @@
 {%- macro day_name(date, short=True) -%}
-    {{ adapter.dispatch('day_name', packages = dbt_date._get_utils_namespaces()) (date, short) }}
+    {{ adapter.dispatch('day_name', 'dbt_date') (date, short) }}
 {%- endmacro %}
 
 {%- macro default__day_name(date, short) -%}
@@ -22,7 +22,7 @@
         when 'Sun' then 'Sunday'
     end
     {%- endif -%}
-    
+
 {%- endmacro %}
 
 {%- macro bigquery__day_name(date, short) -%}

@@ -1,9 +1,9 @@
 {% macro get_fiscal_year_dates(dates, year_end_month=12, week_start_day=1, shift_year=1) %}
-{{ adapter.dispatch('get_fiscal_year_dates', packages = dbt_date._get_utils_namespaces()) (dates, year_end_month, week_start_day, shift_year) }}
+{{ adapter.dispatch('get_fiscal_year_dates', 'dbt_date') (dates, year_end_month, week_start_day, shift_year) }}
 {% endmacro %}
 
 {% macro default__get_fiscal_year_dates(dates, year_end_month, week_start_day, shift_year) %}
--- this gets all the dates within a fiscal year 
+-- this gets all the dates within a fiscal year
 -- determined by the given year-end-month
 -- ending on the saturday closest to that month's end date
 with date_dimension as (
@@ -30,7 +30,7 @@ weeks as (
         cast({{ dbt_utils.dateadd('day', 6, 'd.date_day') }} as date) as week_end_date
     from
         date_dimension d
-    where 
+    where
         d.day_of_week = {{ week_start_day }}
 
 ),
@@ -44,7 +44,7 @@ year_week_ends as (
         weeks d
     where
         d.month_of_year = {{ year_end_month }}
-    group by 
+    group by
         1,2
 
 ),
@@ -71,13 +71,13 @@ fiscal_year_range as (
     select
         w.fiscal_year_number,
         cast(
-            {{ dbt_utils.dateadd('day', 1, 
+            {{ dbt_utils.dateadd('day', 1,
             'lag(w.week_end_date) over(order by w.week_end_date)') }}
             as date) as fiscal_year_start_date,
         w.week_end_date as fiscal_year_end_date
     from
         weeks_at_month_end w
-    where 
+    where
         w.closest_to_month_end = 1
 
 ),
@@ -91,11 +91,11 @@ fiscal_year_dates as (
         w.week_start_date,
         w.week_end_date,
         -- we reset the weeks of the year starting with the merch year start date
-        dense_rank() 
+        dense_rank()
             over(
-                partition by m.fiscal_year_number 
+                partition by m.fiscal_year_number
                 order by w.week_start_date
-                ) as fiscal_week_of_year 
+                ) as fiscal_week_of_year
     from
         date_dimension d
         join

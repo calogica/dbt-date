@@ -1,5 +1,5 @@
 {%- macro to_unixtimestamp(timestamp) -%}
-    {{ adapter.dispatch('to_unixtimestamp', packages = dbt_date._get_utils_namespaces()) (timestamp) }}
+    {{ adapter.dispatch('to_unixtimestamp', 'dbt_date') (timestamp) }}
 {%- endmacro %}
 
 {%- macro default__to_unixtimestamp(timestamp) -%}
