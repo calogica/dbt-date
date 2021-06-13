@@ -15,8 +15,9 @@
         "value " ~ format ~ " for `format` for from_unixtimestamp is not supported."
         ) 
     }}
-    to_timestamp_ntz({{ epochs }}, {{ scale }})
     {% endif -%}
+    
+    to_timestamp_ntz({{ epochs }}, {{ scale }})
 
 {%- endmacro %}
 
