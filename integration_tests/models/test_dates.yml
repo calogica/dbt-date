@@ -7,30 +7,36 @@ models:
         - dbt_utils.expression_is_true:
             expression: "next_date_day = {{ dbt_date.tomorrow('date_day') }}"
         - dbt_utils.expression_is_true:
-            expression: "day_name = {{ dbt_date.day_name('date_day', short=False) }}" 
+            expression: "day_name = {{ dbt_date.day_name('date_day', short=False) }}"
         - dbt_utils.expression_is_true:
-            expression: "day_name_short = {{ dbt_date.day_name('date_day', short=True) }}" 
+            expression: "day_name_short = {{ dbt_date.day_name('date_day', short=True) }}"
         - dbt_utils.expression_is_true:
-            expression: "day_of_month = {{ dbt_date.day_of_month('date_day') }}" 
+            expression: "day_of_month = {{ dbt_date.day_of_month('date_day') }}"
         - dbt_utils.expression_is_true:
-            expression: "day_of_week = {{ dbt_date.day_of_week('date_day', isoweek=False) }}" 
+            expression: "day_of_week = {{ dbt_date.day_of_week('date_day', isoweek=False) }}"
         - dbt_utils.expression_is_true:
-            expression: "iso_day_of_week = {{ dbt_date.day_of_week('date_day', isoweek=True) }}" 
+            expression: "iso_day_of_week = {{ dbt_date.day_of_week('date_day', isoweek=True) }}"
         - dbt_utils.expression_is_true:
-            expression: "day_of_year = {{ dbt_date.day_of_year('date_day') }}" 
+            expression: "day_of_year = {{ dbt_date.day_of_year('date_day') }}"
 
         - dbt_utils.expression_is_true:
-            expression: "week_start_date = {{ dbt_date.week_start('date_day') }}" 
+            expression: "week_start_date = {{ dbt_date.week_start('date_day') }}"
         - dbt_utils.expression_is_true:
-            expression: "week_end_date = {{ dbt_date.week_end('date_day') }}" 
+            expression: "week_end_date = {{ dbt_date.week_end('date_day') }}"
         - dbt_utils.expression_is_true:
-            expression: "week_of_year = {{ dbt_date.week_of_year('date_day') }}" 
+            expression: "week_of_year = {{ dbt_date.week_of_year('date_day') }}"
         - dbt_utils.expression_is_true:
-            expression: "iso_week_start_date = {{ dbt_date.iso_week_start('date_day') }}" 
+            expression: "iso_week_start_date = {{ dbt_date.iso_week_start('date_day') }}"
         - dbt_utils.expression_is_true:
-            expression: "iso_week_end_date = {{ dbt_date.iso_week_end('date_day') }}" 
+            expression: "iso_week_end_date = {{ dbt_date.iso_week_end('date_day') }}"
         - dbt_utils.expression_is_true:
-            expression: "iso_week_of_year = {{ dbt_date.iso_week_of_year('date_day') }}" 
+            expression: "iso_week_of_year = {{ dbt_date.iso_week_of_year('date_day') }}"
+        - dbt_utils.expression_is_true:
+            expression: "time_stamp_utc = {{ dbt_date.from_unixtimestamp('unix_epoch') }}"
+        - dbt_utils.expression_is_true:
+            expression: "unix_epoch = {{ dbt_date.to_unixtimestamp('time_stamp_utc') }}"
+        - dbt_utils.expression_is_true:
+            expression: "time_stamp = {{ dbt_date.convert_timezone('time_stamp_utc') }}"
 
     columns:
       - name: date_day
