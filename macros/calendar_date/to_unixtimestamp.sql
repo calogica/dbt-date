@@ -3,6 +3,10 @@
 {%- endmacro %}
 
 {%- macro default__to_unixtimestamp(timestamp) -%}
+    {{ dbt_date.date_part('epoch', timestamp) }}
+{%- endmacro %}
+
+{%- macro snowflake__to_unixtimestamp(timestamp) -%}
     {{ dbt_date.date_part('epoch_seconds', timestamp) }}
 {%- endmacro %}
 
