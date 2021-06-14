@@ -22,6 +22,17 @@
     cast(to_timestamp({{ epochs }}) at time zone 'UTC' as timestamp)
 {%- endmacro %}
 
+{%- macro postgres__from_unixtimestamp(epochs, format="seconds") -%}
+    {%- if format != "seconds" -%}
+    {{ exceptions.raise_compiler_error(
+        "value " ~ format ~ " for `format` for from_unixtimestamp is not supported."
+        )
+    }}
+    {% endif -%}
+    cast(to_timestamp({{ epochs }}) at time zone 'UTC' as timestamp)
+{%- endmacro %}
+
+
 {%- macro snowflake__from_unixtimestamp(epochs, format) -%}
     {%- if format == "seconds" -%}
     {%- set scale = 0 -%}
@@ -35,8 +46,6 @@
         )
     }}
     {% endif -%}
-    to_timestamp_ntz({{ epochs }}, {{ scale }})
-
     to_timestamp_ntz({{ epochs }}, {{ scale }})
 
 {%- endmacro %}
