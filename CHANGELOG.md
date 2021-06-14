@@ -1,3 +1,15 @@
+# dbt-date v0.3.1
+
+*Patch release*
+
+## Fixes
+
+* Fixed a bug in `snowflake__from_unixtimestamp` that prevented the core functionaility from being called ([#38](https://github.com/calogica/dbt-date/pull/38) by @swanderz)
+
+## Under the hood
+
+* Simplified `join` syntax ([#36](https://github.com/calogica/dbt-date/pull/36))
+
 # dbt-date v0.3.0
 
 ## Breaking Changes
