@@ -1,11 +1,3 @@
-# dbt-date v0.3.2
-
-*Patch release*
-
-## Fixes
-
-* Changes url for `dbt_utils` package ref to new shiny `dbt-labs` repo
-
 # dbt-date v0.3.1
 
 *Patch release*
