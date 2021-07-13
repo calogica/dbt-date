@@ -1,5 +1,5 @@
 {%- macro from_unixtimestamp(epochs, format="seconds") -%}
-    {{ adapter.dispatch('from_unixtimestamp', packages = dbt_date._get_utils_namespaces()) (epochs, format) }}
+    {{ adapter.dispatch('from_unixtimestamp', 'dbt_date') (epochs, format) }}
 {%- endmacro %}
 
 {%- macro default__from_unixtimestamp(epochs, format="seconds") -%}
@@ -23,7 +23,6 @@
 {%- endmacro %}
 
 {%- macro snowflake__from_unixtimestamp(epochs, format) -%}
-
     {%- if format == "seconds" -%}
     {%- set scale = 0 -%}
     {%- elif format == "milliseconds" -%}
@@ -36,7 +35,6 @@
         )
     }}
     {% endif -%}
-
     to_timestamp_ntz({{ epochs }}, {{ scale }})
 
 {%- endmacro %}

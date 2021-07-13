@@ -1,5 +1,5 @@
 {% macro get_base_dates(start_date=None, end_date=None, n_dateparts=None, datepart="day") %}
-    {{ adapter.dispatch('get_base_dates', packages = dbt_date._get_utils_namespaces()) (start_date, end_date, n_dateparts, datepart) }}
+    {{ adapter.dispatch('get_base_dates', 'dbt_date') (start_date, end_date, n_dateparts, datepart) }}
 {% endmacro %}
 
 {% macro default__get_base_dates(start_date, end_date, n_dateparts, datepart) %}

@@ -50,7 +50,7 @@ select
 {%- endmacro %}
 
 {% macro get_test_week_of_year() -%}
-    {{ return(adapter.dispatch('get_test_week_of_year', packages = dbt_date._get_utils_namespaces()) ()) }}
+    {{ return(adapter.dispatch('get_test_week_of_year', 'dbt_date_integration_tests') ()) }}
 {%- endmacro %}
 
 {% macro default__get_test_week_of_year() -%}
@@ -67,7 +67,7 @@ select
 
 
 {% macro get_test_timestamps() -%}
-    {{ return(adapter.dispatch('get_test_timestamps', packages = dbt_date._get_utils_namespaces()) ()) }}
+    {{ return(adapter.dispatch('get_test_timestamps', 'dbt_date_integration_tests') ()) }}
 {%- endmacro %}
 
 {% macro default__get_test_timestamps() -%}

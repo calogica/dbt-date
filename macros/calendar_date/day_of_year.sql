@@ -1,5 +1,5 @@
 {%- macro day_of_year(date) -%}
-{{ adapter.dispatch('day_of_year', packages = dbt_date._get_utils_namespaces()) (date) }}
+{{ adapter.dispatch('day_of_year', 'dbt_date') (date) }}
 {%- endmacro %}
 
 {%- macro default__day_of_year(date) -%}

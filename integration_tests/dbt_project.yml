@@ -17,7 +17,9 @@ clean-targets:
     - "target"
     - "dbt_modules"
 
-require-dbt-version: ">=0.18.1"
+dispatch:
+  - macro_namespace: dbt_date
+    search_order: ['dbt_date_integration_tests', 'dbt_date']  # enable override
 
 vars:
     dbt_date_dispatch_list: ['dbt_date_integration_tests']
