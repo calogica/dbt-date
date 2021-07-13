@@ -1,3 +1,15 @@
+# dbt-date v0.4.0
+
+## Breaking Changes
+
+* Updates calls to adapter.dispatch to support `dbt >= 0.20` (see [Changes to dispatch in dbt v0.20 #34](https://github.com/calogica/dbt-date/issues/34))
+
+* Requires `dbt >= 0.20`
+
+## Under the hood
+
+* Adds tests for timestamp and timezone macros (previously untested, new dbt version highlighted that)
+
 # dbt-date v0.3.1
 
 *Patch release*
