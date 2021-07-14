@@ -144,7 +144,7 @@ Usage:
 ```
 
 #### n_days_away ([source](macros/calendar_date/n_days_away.sql))
-Gets date _n_ days away, based on local date.
+Gets date _n_ days from now, based on local date.
 
 Usage:
 
@@ -162,7 +162,7 @@ Usage:
 ```
 
 #### n_months_away ([source](macros/calendar_date/n_months_away.sql))
-Gets date _n_ months ago, based on local date.
+Gets date _n_ months from now, based on local date.
 
 Usage:
 
