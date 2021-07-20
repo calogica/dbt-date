@@ -1,6 +1,6 @@
 {%- macro iso_week_end(date=None, tz=None) -%}
 {%-set dt = date if date else dbt_date.today(tz) -%}
-{{ adapter.dispatch('iso_week_end', packages = dbt_date._get_utils_namespaces()) (dt) }}
+{{ adapter.dispatch('iso_week_end', 'dbt_date') (dt) }}
 {%- endmacro -%}
 
 {%- macro _iso_week_end(date, week_type) -%}
@@ -13,6 +13,6 @@
 {%- endmacro %}
 
 {%- macro snowflake__iso_week_end(date) -%}
-{{ dbt_date._iso_week_end(date, 'week') }}
+{{ dbt_date._iso_week_end(date, 'weekiso') }}
 {%- endmacro %}
 
