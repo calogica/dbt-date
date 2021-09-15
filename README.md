@@ -41,7 +41,7 @@ For example, use `America/New_York` for East Coast Time.
 
 #### get_date_dimension ([source](macros/get_date_dimension.sql))
 Returns query to build date dimension from/to specified dates, including a number of useful columns based on each date.
-See the [example model](models/examples/dim_date.sql) for details.
+See the [example model](integration_tests/models/dim_date.sql) for details.
 
 Usage:
 
@@ -53,7 +53,7 @@ Usage:
 
 #### get_fiscal_periods ([source](macros/fiscal_date/get_fiscal_periods.sql))
 Returns query to build a fiscal period calendar based on the 4-5-4 week retail period concept.
-See the [example model](models/examples/dim_date_fiscal.sql) for details and this [blog post](https://calogica.com/sql/dbt/2018/11/15/retail-calendar-in-sql.html) for more context on custom business calendars.
+See the [example model](integration_tests/models/dim_date_fiscal.sql) for details and this [blog post](https://calogica.com/sql/dbt/2018/11/15/retail-calendar-in-sql.html) for more context on custom business calendars.
 
 Usage:
 
