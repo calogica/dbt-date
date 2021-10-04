@@ -8,7 +8,7 @@ clean-targets: ["target", "dbt_modules"]
 macro-paths: ["macros"]
 log-path: "logs"
 
-require-dbt-version: [">=0.20.0", "<0.21.0"]
+require-dbt-version: [">=0.20.0", "<0.22.0"]
 profile: integration_tests
 
 quoting:
