@@ -5,9 +5,9 @@ profile: "integration_tests"
 
 config-version: 2
 
-source-paths: ["models"]
+model-paths: ["models"]
 test-paths: ["tests"]
-data-paths: ["data"]
+seed-paths: ["data"]
 macro-paths: ["macros"]
 
 target-path: "target"
