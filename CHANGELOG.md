@@ -1,3 +1,6 @@
+# dbt-date v0.5.0
+* Deprecates support for dbt < 1.0.0
+
 # dbt-date v0.4.2
 ## Under the hood
 * Patch: adds support for dbt 1.x

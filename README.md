@@ -1,14 +1,14 @@
 # dbt-date
-Extension package for [**dbt**](https://github.com/fishtown-analytics/dbt) to handle date logic and calendar functionality.
+Extension package for [**dbt**](https://github.com/dbt-labs/dbt) to handle date logic and calendar functionality.
 
-FYI: this package includes [**dbt-utils**](https://github.com/fishtown-analytics/dbt-utils) so there's no need to also import dbt-utils in your local project. (In fact, you may get an error if you do.)
+FYI: this package includes [**dbt-utils**](https://github.com/dbt-labs/dbt-utils) so there's no need to also import dbt-utils in your local project. (In fact, you may get an error if you do.)
 
 Include in `packages.yml`
 
 ```yaml
 packages:
   - package: calogica/dbt_date
-    version: [">=0.4.0", "<0.5.0"]
+    version: [">=0.5.0", "<0.6.0"]
     # <see https://github.com/calogica/dbt-date/releases/latest> for the latest version tag
 ```
 
@@ -17,7 +17,7 @@ Note: we no longer include `spark_utils` in this package to avoid versioning con
 For example, in `packages.yml`, you will need to include the relevant package:
 
 ```yaml
-  - package: fishtown-analytics/spark_utils
+  - package: dbt-labs/spark_utils
     version: <latest or range>
 ```
 
