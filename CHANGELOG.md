@@ -1,3 +1,7 @@
+# dbt-date v0.4.2
+## Under the hood
+* Support for dbt 1.x!
+
 # dbt-date v0.4.1
 
 ## Under the hood
