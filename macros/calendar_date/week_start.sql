@@ -8,13 +8,12 @@ cast({{ dbt_utils.date_trunc('week', date) }} as date)
 {%- endmacro %}
 
 {%- macro snowflake__week_start(date) -%}
-case
-    when {{ dbt_date.day_of_week(dbt_utils.date_trunc('week', date), isoweek=False) }} = 1
-    then {{ dbt_date.n_days_ago(
-            dbt_date.day_of_week(date, isoweek=False) ~ " - 1",
-            date
-            ) }}
-end
+    {#
+        Get the day of week offset: e.g. if the date is a Sunday,
+        dbt_date.day_of_week returns 1, so we subtract 1 to get a 0 offset
+    #}
+    {% set off_set = dbt_date.day_of_week(date, isoweek=False) ~ " - 1" %}
+    cast({{ dbt_utils.dateadd("day", "-1 * (" ~ off_set ~ ")", date) }} as date)
 {%- endmacro %}
 
 {%- macro postgres__week_start(date) -%}
