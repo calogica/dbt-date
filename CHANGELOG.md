@@ -1,3 +1,6 @@
+# dbt-date v0.5.1
+* Fix `week_start` and `week_end` on Snowflake ([#53](https://github.com/calogica/dbt-date/issues/53), [#54](https://github.com/calogica/dbt-date/pull/54))
+
 # dbt-date v0.5.0
 * Deprecates support for dbt < 1.0.0
 
