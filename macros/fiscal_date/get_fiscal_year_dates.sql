@@ -12,7 +12,7 @@ with date_dimension as (
 year_month_end as (
 
     select
-       d.year_number-{{ shift_year }} as fiscal_year_number,
+       d.year_number - {{ shift_year }} as fiscal_year_number,
        d.month_end_date
     from
         date_dimension d
@@ -38,7 +38,7 @@ weeks as (
 year_week_ends as (
 
     select
-        d.year_number-{{ shift_year }} as fiscal_year_number,
+        d.year_number - {{ shift_year }} as fiscal_year_number,
         d.week_end_date
     from
         weeks d
