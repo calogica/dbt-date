@@ -1,3 +1,6 @@
+# dbt-date v0.5.3
+* Allow negative shift year for fiscal periods ([#57](https://github.com/calogica/dbt-date/issues/57) [@boludo00](https://github.com/boludo00))
+
 # dbt-date v0.5.2
 * Fix [#55](https://github.com/calogica/dbt-date/issues/55 by removing dead macro.
 
