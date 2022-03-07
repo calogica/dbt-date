@@ -260,7 +260,7 @@ See also: [to_unixtimestamp](#to_unixtimestamp)
 
 ### [iso_week_end](macros/calendar_date/iso_week_end.sql)(`date=None, tz=None`)
 
-Computes the week ending date using ISO format, i.e. week ending **Sunday**.
+Computes the week ending date using ISO format, i.e. week starting **Monday** and ending **Sunday**.
 
 Usage:
 
@@ -274,9 +274,9 @@ or, optionally, you can override the default timezone:
 {{ dbt_date.iso_week_end("date_col", tz="America/New_York") }} as iso_week_end_date
 ```
 
-### [iso_week_of_year](macros/calendar_date/iso_week_of_year.sql)(`date=None, tz=None`
+### [iso_week_of_year](macros/calendar_date/iso_week_of_year.sql)(`date=None, tz=None`)
 
-Computes the week of the year using ISO format, i.e. week ending **Sunday**.
+Computes the week of the year using ISO format, i.e. week starting **Monday**.
 
 Usage:
 
@@ -290,7 +290,7 @@ or, optionally, you can override the default timezone:
 {{ dbt_date.iso_week_of_year("date_col", tz="America/New_York") }} as iso_week_of_year
 ```
 
-### [iso_week_start](macros/calendar_date/iso_week_start.sql)(`date=None, tz=None`
+### [iso_week_start](macros/calendar_date/iso_week_start.sql)(`date=None, tz=None`)
 
 Computes the week starting date using ISO format, i.e. week starting **Monday**.
 
@@ -690,7 +690,7 @@ or, optionally, you can override the default timezone:
 
 ### [week_of_year](macros/calendar_date/week_of_year.sql)(`date=None, tz=None`)
 
-Computes the week of the year using standard (US) format, i.e. week ending **Saturday**.
+Computes the week of the year using standard (US) format, i.e. week starting **Sunday** and ending **Saturday**.
 
 Usage:
 
