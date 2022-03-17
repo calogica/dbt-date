@@ -41,7 +41,7 @@ vars:
 You may specify [any valid timezone string](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in place of `America/Los_Angeles`.
 For example, use `America/New_York` for East Coast Time.
 
-### Integration Tests (Developers Only)
+## Integration Tests (Developers Only)
 
 This project contains integration tests for all test macros in a separate `integration_tests` dbt project contained in this repo.
 
