@@ -41,6 +41,17 @@ vars:
 You may specify [any valid timezone string](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in place of `America/Los_Angeles`.
 For example, use `America/New_York` for East Coast Time.
 
+### Integration Tests (Developers Only)
+
+This project contains integration tests for all test macros in a separate `integration_tests` dbt project contained in this repo.
+
+To run the tests:
+
+1. You will need a profile called `integration_tests` in `~/.dbt/profiles.yml` pointing to a writable database. We only support postgres, BigQuery and Snowflake.
+2. Then, from within the `integration_tests` folder, run `dbt build` to run the test models in `integration_tests/models/schema_tests/` and run the tests specified in `integration_tests/models/schema_tests/schema.yml`
+
+## Available Tests
+
 ## Available Macros
 
 ### Date Dimension
