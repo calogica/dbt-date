@@ -104,7 +104,7 @@ To run the tests:
 
 ### [get_base_dates](macros/get_base_dates.sql)(`start_date=None, end_date=None, n_dateparts=None, datepart="day"`)
 
-A wrapper around `dbt_utils.date_spine` that allows you to specify either `start_date` and `end_date` for your date spine, or specify a number of periods (`n_dateparts`) in the past from today.
+A wrapper around [`dbt_utils.date_spine`](https://github.com/dbt-labs/dbt-utils#date_spine-source) that allows you to specify either `start_date` and `end_date` for your date spine, or specify a number of periods (`n_dateparts`) in the past from today.
 
 Usage:
 
