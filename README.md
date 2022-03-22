@@ -56,59 +56,55 @@ To run the tests:
 
 ### Date Dimension
 
-- [get_base_dates](#get_base_dates)
-- [get_date_dimension](#get_date_dimension)
+- [get_base_dates](#get_base_datesstart_datenone-end_datenone-n_datepartsnone-datepartday)
+- [get_date_dimension](#get_date_dimensionstart_date-end_date)
 
 ### Calendar Date
 
-- [convert_timezone](#convert_timezone)
-- [date_part](#date_part)
-- [day_name](#day_name)
-- [day_of_month](#day_of_month)
-- [day_of_week](#day_of_week)
-- [day_of_year](#day_of_year)
-- [from_unixtimestamp](#from_unixtimestamp)
-- [iso_week_end](#iso_week_end)
-- [iso_week_of_year](#iso_week_of_year)
-- [iso_week_start](#iso_week_start)
-- [last_month_name](#last_month_name)
-- [last_month_number](#last_month_number)
-- [last_month_start_date](#last_month_start_date)
-- [last_month](#last_month)
-- [last_week](#last_week)
-- [month_name](#month_name)
-- [n_days_ago](#n_days_ago)
-- [n_days_away](#n_days_away)
-- [n_months_ago](#n_months_ago)
-- [n_months_away](#n_months_away)
-- [n_weeks_ago](#n_weeks_ago)
-- [n_weeks_away](#n_weeks_away)
-- [next_month_name](#next_month_name)
-- [next_month_number](#next_month_number)
-- [next_month_start_date](#next_month_start_date)
-- [next_month](#next_month)
-- [next_week_start_date](#next_week_start_date)
-- [next_week](#next_week)
-- [now](#now)
-- [periods_since](#periods_since)
-- [to_unixtimestamp](#to_unixtimestamp)
-- [today](#today)
-- [tomorrow](#tomorrow)
-- [week_end](#week_end)
-- [week_of_year](#week_of_year)
-- [week_start](#week_start)
-- [yesterday](#yesterday)
+- [convert_timezone](#convert_timezone-column-target_tznone-source_tznone)
+- [date_part](#date_partdatepart-date)
+- [day_name](#day_namedate-shorttrue)
+- [day_of_month](#day_of_monthdate)
+- [day_of_week](#day_of_weekdate-isoweektrue)
+- [day_of_year](#day_of_yeardate)
+- [from_unixtimestamp](#from_unixtimestampepochs-formatseconds)
+- [iso_week_end](#iso_week_enddatenone-tznone)
+- [iso_week_of_year](#iso_week_of_yeardatenone-tznone)
+- [iso_week_start](#iso_week_startdatenone-tznone)
+- [last_month_name](#last_month_nameshorttrue-tznone)
+- [last_month_number](#last_month_numbertznone)
+- [last_month](#last_monthtznone)
+- [last_week](#last_weektznone)
+- [month_name](#month_namedate-shorttrue-tznone)
+- [n_days_ago](#n_days_agon-datenone-tznone)
+- [n_days_away](#n_days_awayn-datenone-tznone)
+- [n_months_ago](#n_months_agon-tznone)
+- [n_months_away](#n_months_awayn-tznone)
+- [n_weeks_ago](#n_weeks_agon-tznone)
+- [n_weeks_away](#n_weeks_awayn-tznone)
+- [next_month_name](#next_month_nameshorttrue-tznone)
+- [next_month_number](#next_month_numbertznone)
+- [next_month](#next_monthtznone)
+- [next_week](#next_weektznone)
+- [now](#nowtznone)
+- [periods_since](#periods_sincedate_col-period_nameday-tznone)
+- [to_unixtimestamp](#to_unixtimestamptimestamp)
+- [today](#todaytznone)
+- [tomorrow](#tomorrowdatenone-tznone)
+- [week_end](#week_enddatenone-tznone)
+- [week_of_year](#week_of_yeardatenone-tznone)
+- [week_start](#week_startdatenone-tznone)
+- [yesterday](#yesterdaydatenone-tznone)
 
 ## Fiscal Date
 
-- [get_fiscal_periods](#get_fiscal_periods)
-- [get_fiscal_year_dates](#get_fiscal_year_dates)
+- [get_fiscal_periods](#get_fiscal_periodsdates-year_end_month-week_start_day-shift_year1)
 
 ## Documentation
 
 ### [get_base_dates](macros/get_base_dates.sql)(`start_date=None, end_date=None, n_dateparts=None, datepart="day"`)
 
-A wrapper around `dbt_utils.date_spine` that allows you to specify either `start_date` and `end_date` for your date spine, or specify a number of periods (`n_dateparts`) in the past from today.
+A wrapper around [`dbt_utils.date_spine`](https://github.com/dbt-labs/dbt-utils#date_spine-source) that allows you to specify either `start_date` and `end_date` for your date spine, or specify a number of periods (`n_dateparts`) in the past from today.
 
 Usage:
 
