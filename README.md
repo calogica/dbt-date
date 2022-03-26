@@ -100,6 +100,10 @@ To run the tests:
 
 - [get_fiscal_periods](#get_fiscal_periodsdates-year_end_month-week_start_day-shift_year1)
 
+## Utils
+
+- [relative_datediff](#relative_datediffdate1-date2-datepart)
+
 ## Documentation
 
 ### [get_base_dates](macros/get_base_dates.sql)(`start_date=None, end_date=None, n_dateparts=None, datepart="day"`)
@@ -765,4 +769,20 @@ or, optionally, you can override the default timezone:
 
 ```sql
 {{ dbt_date.yesterday(tz="America/New_York") }} as date_yesterday
+```
+
+### [relative_datediff](macros/utils/relative_datediff.sql)(`date1, date2, datepart`)
+
+A date diff macro that can account for non calendar computed diffs between two date like fields, `date1` and `date2`, measured in `datepart`.
+
+When `day` is passed as the `datepart`, this reduces to the usual dbt utils datediff.
+
+For example,
+`{{dbt_date.relative_datediff("'2021-11-05'", "'2021-12-02'", 'month')}}` returns 0 while
+`{{dbt_utils.datediff("'2021-11-05'", "'2021-12-02'", 'month')}}` returns 1.
+
+Ordering is as follows: if date2 is after date1, the returned datediff is positive.
+
+```sql
+    {{ relative_datediff('acquisition_date', 'order_date', 'month') }} as months_since_acquisition
 ```
