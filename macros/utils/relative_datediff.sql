@@ -7,9 +7,7 @@
 
     This macro works by looking at the date of date1, subtracting that (minus one) number of days to date 2
     (which normalises date2 relative to date 1, ie. as if date 1 was the first of a month) and then computes
-    the normal date diff.
-
-    TODO: use a date_part from dbt utils (which doesn't exist right now :P) instead of hardcoding the function.
+    the normal date diff. It is guaranteed to give an answer lower than a usual date diff.
 #}
 {% macro relative_datediff(date1, date2, datepart) %}
     {{
@@ -17,7 +15,7 @@
             date1,
             dbt_utils.dateadd(
                 'day',
-                '1 - date_part(day,'~date1~')',
+                '1 - ' ~ dbt_date.date_part('day',date1),
                 date2
             ),
             datepart
