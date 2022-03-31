@@ -30,3 +30,7 @@ cast({{ column }} at time zone '{{ source_tz }}' at time zone '{{ target_tz }}' 
 cast({{ column }} at time zone '{{ target_tz }}' as {{ dbt_utils.type_timestamp() }})
 {%- endif -%}
 {%- endmacro -%}
+
+{%- macro redshift__convert_timezone(column, target_tz, source_tz) -%}
+{{ return(default__convert_timezone(column, target_tz, source_tz) }}
+{%- endmacro -%}
