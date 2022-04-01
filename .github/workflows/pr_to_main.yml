@@ -25,6 +25,7 @@ jobs:
   pr_to_main:
     name: pr_to_main
     runs-on: ubuntu-latest
+    environment: dev
 
     steps:
       - name: Checkout
