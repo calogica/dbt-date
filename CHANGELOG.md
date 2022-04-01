@@ -1,4 +1,7 @@
 # dbt-date v0.5.5
+* Fix missing bracket by @clausherther in https://github.com/calogica/dbt-date/pull/66
+
+# dbt-date v0.5.5
 * Fix README table of contents' links by @coisnepe [#61](https://github.com/calogica/dbt-date/pull/61)
 * Fix timezone conversion macro on redshift by @msnidal [#63](https://github.com/calogica/dbt-date/pull/63)
 
