@@ -11,7 +11,7 @@ env:
   DBT_GOOGLE_PROJECT: ${{ secrets.DBT_GOOGLE_PROJECT }}
   DBT_GOOGLE_BIGQUERY_DATASET: ${{ secrets.DBT_GOOGLE_BIGQUERY_DATASET }}
   # The DBT_GOOGLE_BIGQUERY_KEYFILE_DEV secret will be written to a json file below
-  DBT_GOOGLE_BIGQUERY_KEYFILE: dbt-service-account.json
+  DBT_GOOGLE_BIGQUERY_KEYFILE: ${{ secrets.DBT_GOOGLE_BIGQUERY_KEYFILE }}
 
   DBT_SNOWFLAKE_ACCOUNT: ${{ secrets.DBT_SNOWFLAKE_ACCOUNT }}
   DBT_SNOWFLAKE_USER: ${{ secrets.DBT_SNOWFLAKE_USER }}
@@ -36,11 +36,11 @@ jobs:
         with:
           python-version: "3.8.x"
 
-      - name: Authenticate using service account
-        run: 'echo "$KEYFILE" > $DBT_GOOGLE_BIGQUERY_KEYFILE'
-        shell: bash
-        env:
-          KEYFILE: ${{ secrets.DBT_GOOGLE_BIGQUERY_KEYFILE }}
+      # - name: Authenticate using service account
+      #   run: 'echo "$KEYFILE" > $DBT_GOOGLE_BIGQUERY_KEYFILE'
+      #   shell: bash
+      #   env:
+      #     KEYFILE: ${{ secrets.DBT_GOOGLE_BIGQUERY_KEYFILE }}
 
       - name: Install dependencies
         run: |
