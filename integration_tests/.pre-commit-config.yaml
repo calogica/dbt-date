@@ -4,7 +4,7 @@ repos:
   hooks:
   - id: check-script-semicolon
   - id: dbt-test
-    args: ["--models", "test_dates", "--cmd-flags", "++target", "postgres", "--"]
+    args: ["--models", "integration_tests/models/test_dates", "--cmd-flags", "++target", "postgres", "--"]
   - id: dbt-test
     args: ["--models", "test_dates", "--cmd-flags", "++target", "bq", "--"]
   # - id: dbt-test
