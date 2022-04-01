@@ -27,12 +27,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out
+      - name: Checkout
         uses: actions/checkout@main
 
-      - uses: actions/setup-python@v1
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          python-version: "3.9.x"
+          python-version: "3.8.x"
 
       - name: Authenticate using service account
         run: 'echo "$KEYFILE" > $DBT_GOOGLE_BIGQUERY_KEYFILE'
@@ -42,11 +43,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install dbt-core dbt-postgres dbt-bigquery dbt-snowflake
+          pip install pip wheel dbt-core dbt-postgres dbt-bigquery dbt-snowflake
           dbt deps --project-dir $DBT_PROJECT_DIR
 
-      - name: Build dbt models (BigQuery)
-        run: dbt build -t bq --project-dir $DBT_PROJECT_DIR
+      # - name: Build dbt models (BigQuery)
+      #   run: dbt build -t bq --project-dir $DBT_PROJECT_DIR
 
       - name: Build dbt models (Snowflake)
         run: dbt build -t snowflake --project-dir $DBT_PROJECT_DIR
