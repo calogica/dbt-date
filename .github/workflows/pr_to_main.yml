@@ -6,6 +6,7 @@ on:
       - main
 env:
   DBT_PROFILES_DIR: ./
+  DBT_PROJECT_DIR: ./integration_tests
 
   DBT_GOOGLE_PROJECT: ${{ secrets.DBT_GOOGLE_PROJECT }}
   DBT_GOOGLE_BIGQUERY_DATASET: ${{ secrets.DBT_GOOGLE_BIGQUERY_DATASET }}
@@ -41,12 +42,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install dbt-core dbt-postgres dbt-bigquery
+          pip install dbt-core dbt-postgres dbt-bigquery dbt-snowflake
           dbt deps
 
       - name: Build dbt models (BigQuery)
-        run: dbt build -t bq
+        run: dbt build -t bq --project-dir $DBT_PROJECT_DIR
 
       - name: Build dbt models (Snowflake)
-        run: dbt build -t snowflake
+        run: dbt build -t snowflake --project-dir $DBT_PROJECT_DIR
 
