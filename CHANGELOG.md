@@ -1,4 +1,4 @@
-# dbt-date v0.5.5
+# dbt-date v0.5.6
 * Fix missing bracket by @clausherther in https://github.com/calogica/dbt-date/pull/66
 
 # dbt-date v0.5.5
