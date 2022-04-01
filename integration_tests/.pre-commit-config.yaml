@@ -1,0 +1,10 @@
+repos:
+- repo: https://github.com/offbi/pre-commit-dbt
+  rev: main
+  hooks:
+  - id: check-script-semicolon
+  - id: dbt-test
+  - id: dbt-test
+    args: ["--cmd-flags", "++target", "bq", "--"]
+  - id: dbt-test
+    args: ["--cmd-flags", "++target", "snowflake", "--"]
