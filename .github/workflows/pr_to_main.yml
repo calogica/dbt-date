@@ -47,8 +47,8 @@ jobs:
           pip install pip wheel dbt-core dbt-postgres dbt-bigquery dbt-snowflake
           dbt deps --project-dir $DBT_PROJECT_DIR
 
-      # - name: Build dbt models (BigQuery)
-      #   run: dbt build -t bq --project-dir $DBT_PROJECT_DIR
+      - name: Build dbt models (BigQuery)
+        run: dbt build -t bq --project-dir $DBT_PROJECT_DIR
 
       - name: Build dbt models (Snowflake)
         run: dbt build -t snowflake --project-dir $DBT_PROJECT_DIR
