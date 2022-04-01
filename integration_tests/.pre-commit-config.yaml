@@ -4,8 +4,8 @@ repos:
   hooks:
   - id: check-script-semicolon
   - id: dbt-test
-    args: ["--models", "", "--cmd-flags", "++target", "postgres", "--"]
+    args: ["--models", "test_dates", "--cmd-flags", "++target", "postgres", "--"]
   - id: dbt-test
-    args: ["--models", "", "--cmd-flags", "++target", "bq", "--"]
+    args: ["--models", "test_dates", "--cmd-flags", "++target", "bq", "--"]
   # - id: dbt-test
   #   args: ["--cmd-flags", "++target", "snowflake", "--"]
