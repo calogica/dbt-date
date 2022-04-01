@@ -1,0 +1,18 @@
+repos:
+- repo: local
+  hooks:
+  - id: dbt_build_postgres
+    name: dbt_build_postgres
+    entry: "dbt build --project-dir integration_tests -t postgres"
+    language: system
+    pass_filenames: false
+  - id: dbt_build_bigquery
+    name: dbt_build_bigquery
+    entry: "dbt build --project-dir integration_tests -t bq"
+    language: system
+    pass_filenames: false
+  - id: dbt_build_snowflake
+    name: dbt_build_snowflake
+    entry: "dbt build --project-dir integration_tests -t snowflake"
+    language: system
+    pass_filenames: false
