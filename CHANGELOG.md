@@ -1,8 +1,15 @@
+# dbt-date v0.5.5
+* Fix README table of contents' links by @coisnepe [#61](https://github.com/calogica/dbt-date/pull/61)
+* Fix timezone conversion macro on redshift by @msnidal [#63](https://github.com/calogica/dbt-date/pull/63)
+
+# dbt-date v0.5.4
+* Updated Documentation [#60](https://github.com/calogica/dbt-date/pull/60)
+
 # dbt-date v0.5.3
 * Allow negative shift year for fiscal periods ([#57](https://github.com/calogica/dbt-date/issues/57) [@boludo00](https://github.com/boludo00))
 
 # dbt-date v0.5.2
-* Fix [#55](https://github.com/calogica/dbt-date/issues/55 by removing dead macro.
+* Fix [#55](https://github.com/calogica/dbt-date/issues/55) by removing dead macro.
 
 # dbt-date v0.5.1
 * Fix `week_start` and `week_end` on Snowflake ([#53](https://github.com/calogica/dbt-date/issues/53), [#54](https://github.com/calogica/dbt-date/pull/54))
