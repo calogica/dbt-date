@@ -43,7 +43,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install dbt-core dbt-postgres dbt-bigquery dbt-snowflake
-          dbt deps
+          dbt deps --project-dir $DBT_PROJECT_DIR
 
       - name: Build dbt models (BigQuery)
         run: dbt build -t bq --project-dir $DBT_PROJECT_DIR
