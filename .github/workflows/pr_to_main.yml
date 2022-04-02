@@ -61,7 +61,7 @@ jobs:
         if: ${{ env.ACT == false }}
         run: |
           apt-get update
-          apt-get postgresql-client
+          apt-get install -y postgresql-client
 
       - name: Query database
         if: ${{ env.ACT == false }}
