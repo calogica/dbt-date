@@ -1,3 +1,7 @@
+# dbt-date v0.5.7
+* Add github actions workflow by @clausherther in https://github.com/calogica/dbt-date/pull/69
+* Fix Redshift timezone conversion macro by @wellykachtel in https://github.com/calogica/dbt-date/pull/71
+
 # dbt-date v0.5.6
 * Fix missing bracket by @clausherther in https://github.com/calogica/dbt-date/pull/66
 
