@@ -8,7 +8,7 @@ integration_tests:
       type: postgres
       host: localhost
       user: postgres
-      pass: dbt
+      pass: postgres
       dbname: postgres
       schema: test
       port: 5432
