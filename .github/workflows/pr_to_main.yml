@@ -31,6 +31,7 @@ jobs:
   pr_to_main:
     name: pr_to_main
     runs-on: ubuntu-latest
+    container: python:3.8
     environment: dev
 
     services:
@@ -48,52 +49,26 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
-        ports:
-          # Maps tcp port 5432 on service container to the host
-          - 5432:5432
+        # ports:
+        #   # Maps tcp port 5432 on service container to the host
+        #   - 5432:5432
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        # with:
-        #   ref: ${{ github.event.pull_request.head.sha }} # Check out the code of the PR
+        uses: actions/checkout@v3
 
-
-      # - name: Install PostgreSQL
-      #   if: ${{ env.ACT }}
-      #   run: |
-      #     apt-get update
-      #     apt-get install --yes postgresql postgresql-client
-
-      # - name: Install PostgreSQL client
-      #   run: |
-      #     apt-get update
-      #     apt-get install --yes postgresql-client
-
-      # - name: Boot local dependencies
-      #   if: ${{ env.ACT }}
-      #   run: |
-      #     sudo service postgresql start
-
-      # - name: Configure local dependencies
-      #   if: ${{ env.ACT }}
-      #   run: |
-      #     sudo -u postgres psql -U postgres -d postgres -c "alter user postgres with password 'postgres';"
-
-
-      # Queries database with postgres client
       - name: Query database
+        if: ${{ env.ACT == false }}
         run: psql -h $POSTGRES_HOST -d postgres -c 'SELECT 1;'
         env:
-          POSTGRES_HOST: localhost
+          POSTGRES_HOST: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_PORT: 5432
-          # POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.8.x"
+      # - name: Set up Python
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: "3.8.x"
 
       - name: Install Python packages
         run: |
@@ -114,11 +89,13 @@ jobs:
           dbt deps --project-dir $DBT_PROJECT_DIR
 
       - name: Build dbt models (Postgres)
+        if: ${{ env.ACT == false }}
         run:  |
           . venv/bin/activate
           dbt build -t postgres --project-dir $DBT_PROJECT_DIR
 
       - name: Build dbt models (BigQuery)
+        if: ${{ env.ACT == false }}
         run: |
           . venv/bin/activate
           dbt build -t bq --project-dir $DBT_PROJECT_DIR
