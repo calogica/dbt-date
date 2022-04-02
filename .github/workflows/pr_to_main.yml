@@ -68,7 +68,7 @@ jobs:
 
       - name: Query database
         if: ${{ env.ACT == false }}
-        run: psql postgresql://postgres:postgres@postgres:5432/postgres?sslmode=require
+        run: psql postgresql://postgres:postgres@postgres:5432/postgres
         # run: psql -h postgres -U postgres -d postgres -c 'SELECT 1;'
         # env:
         #   # POSTGRES_HOST: postgres
