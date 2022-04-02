@@ -59,7 +59,7 @@ jobs:
 
       - name: Query database
         if: ${{ env.ACT == false }}
-        run: psql -h $POSTGRES_HOST -d postgres -c 'SELECT 1;'
+        run: psql -h postgres -d postgres -c 'SELECT 1;'
         env:
           POSTGRES_HOST: postgres
           POSTGRES_PASSWORD: postgres
