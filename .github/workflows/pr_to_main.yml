@@ -41,7 +41,10 @@ jobs:
         image: postgres
         # Provide the password for postgres
         env:
+          POSTGRES_DB: postgres
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -65,11 +68,12 @@ jobs:
 
       - name: Query database
         if: ${{ env.ACT == false }}
-        run: psql -h postgres -U postgres -d postgres -c 'SELECT 1;'
-        env:
-          # POSTGRES_HOST: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_PORT: 5432
+        run: postgresql://postgres:postgres@postgres:5432/postgres?sslmode=require
+        # run: psql -h postgres -U postgres -d postgres -c 'SELECT 1;'
+        # env:
+        #   # POSTGRES_HOST: postgres
+        #   POSTGRES_PASSWORD: postgres
+        #   POSTGRES_PORT: 5432
 
       # - name: Set up Python
       #   uses: actions/setup-python@v2
