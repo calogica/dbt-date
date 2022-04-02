@@ -6,7 +6,7 @@ integration_tests:
   outputs:
     postgres:
       type: postgres
-      host: localhost
+      host: postgres
       user: postgres
       pass: postgres
       dbname: postgres
