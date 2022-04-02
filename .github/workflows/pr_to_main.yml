@@ -60,15 +60,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install psql
-        if: ${{ env.ACT == false }}
-        run: |
-          apt-get update
-          apt-get install -y postgresql-client
+      # - name: Install psql
+      #   if: ${{ env.ACT == false }}
+      #   run: |
+      #     apt-get update
+      #     apt-get install -y postgresql-client
 
-      - name: Query database
-        if: ${{ env.ACT == false }}
-        run: psql postgresql://postgres:postgres@postgres:5432/postgres
+      # - name: Query database
+      #   if: ${{ env.ACT == false }}
+      #   run: psql postgresql://postgres:postgres@postgres:5432/postgres
         # run: psql -h postgres -U postgres -d postgres -c 'SELECT 1;'
         # env:
         #   # POSTGRES_HOST: postgres
