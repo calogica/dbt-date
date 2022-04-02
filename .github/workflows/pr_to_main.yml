@@ -57,6 +57,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Install psql
+        if: ${{ env.ACT == false }}
+        run: |
+          apt-get update
+          apt-get postgresql-client
+
       - name: Query database
         if: ${{ env.ACT == false }}
         run: psql -h postgres -d postgres -c 'SELECT 1;'
