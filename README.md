@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/calogica/dbt-date/tree/main.svg?style=svg)](https://circleci.com/gh/calogica/dbt-date/tree/main)
+
 # dbt-date
 
 Extension package for [**dbt**](https://github.com/dbt-labs/dbt) to handle date logic and calendar functionality.
