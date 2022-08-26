@@ -19,8 +19,8 @@ select
     'November' as month_name,
     'Nov' as month_name_short,
     1623076520 as unix_epoch,
-    cast('{{ get_test_timestamps()[0] }}' as {{ dbt_utils.type_timestamp() }}) as time_stamp,
-    cast('{{ get_test_timestamps()[1] }}' as {{ dbt_utils.type_timestamp() }}) as time_stamp_utc
+    cast('{{ get_test_timestamps()[0] }}' as {{ type_timestamp() }}) as time_stamp,
+    cast('{{ get_test_timestamps()[1] }}' as {{ type_timestamp() }}) as time_stamp_utc
 
 union all
 
@@ -44,8 +44,8 @@ select
     'Dec' as month_name_short,
     {# 1623051320 as unix_epoch, #}
     1623076520 as unix_epoch,
-    cast('{{ get_test_timestamps()[0] }}' as {{ dbt_utils.type_timestamp() }}) as time_stamp,
-    cast('{{ get_test_timestamps()[1] }}' as {{ dbt_utils.type_timestamp() }}) as time_stamp_utc
+    cast('{{ get_test_timestamps()[0] }}' as {{ type_timestamp() }}) as time_stamp,
+    cast('{{ get_test_timestamps()[1] }}' as {{ type_timestamp() }}) as time_stamp_utc
 
 {%- endmacro %}
 
