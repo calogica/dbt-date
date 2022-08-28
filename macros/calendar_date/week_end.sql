@@ -4,7 +4,7 @@
 {%- endmacro -%}
 
 {%- macro default__week_end(date) -%}
-{{ dbt_utils.last_day(date, 'week') }}
+{{ last_day(date, 'week') }}
 {%- endmacro %}
 
 {%- macro snowflake__week_end(date) -%}

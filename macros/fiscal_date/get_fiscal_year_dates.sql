@@ -27,7 +27,7 @@ weeks as (
         d.year_number,
         d.month_of_year,
         d.date_day as week_start_date,
-        cast({{ dbt_utils.dateadd('day', 6, 'd.date_day') }} as date) as week_end_date
+        cast({{ dateadd('day', 6, 'd.date_day') }} as date) as week_end_date
     from
         date_dimension d
     where
@@ -58,7 +58,7 @@ weeks_at_month_end as (
         rank() over
             (partition by d.fiscal_year_number
                 order by
-                abs({{ dbt_utils.datediff('d.week_end_date', 'm.month_end_date', 'day') }})
+                abs({{ datediff('d.week_end_date', 'm.month_end_date', 'day') }})
 
             ) as closest_to_month_end
     from
@@ -71,7 +71,7 @@ fiscal_year_range as (
     select
         w.fiscal_year_number,
         cast(
-            {{ dbt_utils.dateadd('day', 1,
+            {{ dateadd('day', 1,
             'lag(w.week_end_date) over(order by w.week_end_date)') }}
             as date) as fiscal_year_start_date,
         w.week_end_date as fiscal_year_end_date
