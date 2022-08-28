@@ -1,3 +1,7 @@
+# dbt-date v0.6.0
+* Move to dbt-utils 0.9.0
+* Remove references to deprecated dbt-utils cross-db macros by @clausherther in https://github.com/calogica/dbt-date/pull/79
+
 # dbt-date v0.5.7
 * Add github actions workflow by @clausherther in https://github.com/calogica/dbt-date/pull/69
 * Fix Redshift timezone conversion macro by @wellykachtel in https://github.com/calogica/dbt-date/pull/71
