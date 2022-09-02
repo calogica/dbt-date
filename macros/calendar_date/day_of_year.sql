@@ -11,5 +11,5 @@
 {%- endmacro %}
 
 {%- macro redshift__day_of_year(date) -%}
-    cast({{ dbt_date.date_part('dayofyear', date) }} as {{ dbt_utils.type_bigint() }})
+    cast({{ dbt_date.date_part('dayofyear', date) }} as {{ type_bigint() }})
 {%- endmacro %}
