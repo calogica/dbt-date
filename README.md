@@ -64,6 +64,7 @@ To run the tests:
 ### Calendar Date
 
 - [convert_timezone](#convert_timezone-column-target_tznone-source_tznone)
+- [date_from_timestamp](#date_from_timestamp)
 - [date_part](#date_partdatepart-date)
 - [day_name](#day_namedate-shorttrue)
 - [day_of_month](#day_of_monthdate)
@@ -174,6 +175,15 @@ Using named parameters, we can also specify the source only and rely on the conf
 
 ```sql
 {{ dbt_date.convert_timezone("my_column", source_tz="UTC") }}
+```
+
+### [date_from_timestamp](macros/calendar_date/date_from_timestamp.sql)(`timestamp`)
+
+Extracts date from timestamps and returns date object.
+
+Usage:
+```sql
+{{ dbt_date.date_from_timestamp("timestamp_column") }} as date_from_timestamp
 ```
 
 ### [date_part](macros/calendar_date/date_part.sql)(`datepart, date`)
