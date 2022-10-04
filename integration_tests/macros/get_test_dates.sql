@@ -20,6 +20,7 @@ select
     'Nov' as month_name_short,
     1623076520 as unix_epoch,
     cast('{{ get_test_timestamps()[0] }}' as {{ type_timestamp() }}) as time_stamp,
+    cast('2021-06-07' as date) as time_stamp_date,
     cast('{{ get_test_timestamps()[1] }}' as {{ type_timestamp() }}) as time_stamp_utc
 
 union all
@@ -45,6 +46,7 @@ select
     {# 1623051320 as unix_epoch, #}
     1623076520 as unix_epoch,
     cast('{{ get_test_timestamps()[0] }}' as {{ type_timestamp() }}) as time_stamp,
+    cast('2021-06-07' as date) as time_stamp_date,
     cast('{{ get_test_timestamps()[1] }}' as {{ type_timestamp() }}) as time_stamp_utc
 
 {%- endmacro %}
