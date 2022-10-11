@@ -768,3 +768,35 @@ or, optionally, you can override the default timezone:
 ```sql
 {{ dbt_date.yesterday(tz="America/New_York") }} as date_yesterday
 ```
+
+### [round_timestamp](macros/calendar_date/round_timestamp.sql)(`field`)
+
+Rounds the given timestamp or date to the nearest date.
+
+```sql
+select
+{{ dbt_date.round_timestamp("timestamp_col") }} as nearest_date
+...
+```
+
+A few examples:
+
+```sql
+{{ dbt_date.round_timestamp("'2022-02-05 18:45:15'")}}
+-- results in 2022-02-06
+```
+
+```sql
+{{ dbt_date.round_timestamp("'2022-02-05 11:45:15'")}}
+-- results in 2022-02-05
+```
+
+```sql
+{{ dbt_date.round_timestamp("'2022-02-05 12:00:00'")}}
+-- results in 2022-02-06
+```
+
+```sql
+{{ dbt_date.round_timestamp("'2022-02-05 00:00:00'")}}
+-- results in 2022-02-05
+```
