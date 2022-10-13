@@ -90,6 +90,7 @@ To run the tests:
 - [next_week](#next_weektznone)
 - [now](#nowtznone)
 - [periods_since](#periods_sincedate_col-period_nameday-tznone)
+- [round_timestamp](#round_timestamptimestamp)
 - [to_unixtimestamp](#to_unixtimestamptimestamp)
 - [today](#todaytznone)
 - [tomorrow](#tomorrowdatenone-tznone)
@@ -621,6 +622,38 @@ or, optionally, you can override the default timezone:
 {{ dbt_date.periods_since("my_timestamp_column", period_name="minute", tz="UTC" }}
 ```
 
+### [round_timestamp](macros/calendar_date/round_timestamp.sql)(`timestamp`)
+
+Rounds the given timestamp or date to the nearest date (return type is `timestamp`).
+
+```sql
+select
+{{ dbt_date.round_timestamp("timestamp_col") }} as nearest_date
+...
+```
+
+A few examples:
+
+```sql
+{{ dbt_date.round_timestamp("'2022-02-05 18:45:15'")}}
+-- results in 2022-02-06
+```
+
+```sql
+{{ dbt_date.round_timestamp("'2022-02-05 11:45:15'")}}
+-- results in 2022-02-05
+```
+
+```sql
+{{ dbt_date.round_timestamp("'2022-02-05 12:00:00'")}}
+-- results in 2022-02-06
+```
+
+```sql
+{{ dbt_date.round_timestamp("'2022-02-05 00:00:00'")}}
+-- results in 2022-02-05
+```
+
 ### [to_unixtimestamp](macros/calendar_date/to_unixtimestamp.sql)(`timestamp`)
 
 Gets Unix timestamp (epochs) based on provided timestamp.
@@ -767,36 +800,4 @@ or, optionally, you can override the default timezone:
 
 ```sql
 {{ dbt_date.yesterday(tz="America/New_York") }} as date_yesterday
-```
-
-### [round_timestamp](macros/calendar_date/round_timestamp.sql)(`field`)
-
-Rounds the given timestamp or date to the nearest date.
-
-```sql
-select
-{{ dbt_date.round_timestamp("timestamp_col") }} as nearest_date
-...
-```
-
-A few examples:
-
-```sql
-{{ dbt_date.round_timestamp("'2022-02-05 18:45:15'")}}
--- results in 2022-02-06
-```
-
-```sql
-{{ dbt_date.round_timestamp("'2022-02-05 11:45:15'")}}
--- results in 2022-02-05
-```
-
-```sql
-{{ dbt_date.round_timestamp("'2022-02-05 12:00:00'")}}
--- results in 2022-02-06
-```
-
-```sql
-{{ dbt_date.round_timestamp("'2022-02-05 00:00:00'")}}
--- results in 2022-02-05
 ```
