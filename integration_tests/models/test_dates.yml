@@ -37,6 +37,10 @@ models:
             expression: "unix_epoch = {{ dbt_date.to_unixtimestamp('time_stamp_utc') }}"
         - dbt_utils.expression_is_true:
             expression: "time_stamp = {{ dbt_date.convert_timezone('time_stamp_utc') }}"
+        - dbt_utils.expression_is_true:
+            expression: "rounded_timestamp = {{ dbt_date.round_timestamp('time_stamp') }}"
+        - dbt_utils.expression_is_true:
+            expression: "rounded_timestamp_utc = {{ dbt_date.round_timestamp('time_stamp_utc') }}"
 
     columns:
       - name: date_day
