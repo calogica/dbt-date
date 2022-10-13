@@ -21,8 +21,8 @@ select
     1623076520 as unix_epoch,
     cast('{{ get_test_timestamps()[0] }}' as {{ type_timestamp() }}) as time_stamp,
     cast('{{ get_test_timestamps()[1] }}' as {{ type_timestamp() }}) as time_stamp_utc,
-    cast('2021-06-07' as date) as rounded_timestamp,
-    cast('2021-06-08' as date) as rounded_timestamp_utc
+    cast('2021-06-07' as {{ type_timestamp() }}) as rounded_timestamp,
+    cast('2021-06-08' as {{ type_timestamp() }}) as rounded_timestamp_utc
 
 union all
 
@@ -48,8 +48,8 @@ select
     1623076520 as unix_epoch,
     cast('{{ get_test_timestamps()[0] }}' as {{ type_timestamp() }}) as time_stamp,
     cast('{{ get_test_timestamps()[1] }}' as {{ type_timestamp() }}) as time_stamp_utc,
-    cast('2021-06-07' as date) as rounded_timestamp,
-    cast('2021-06-08' as date) as rounded_timestamp_utc
+    cast('2021-06-07' as {{ type_timestamp() }}) as rounded_timestamp,
+    cast('2021-06-08' as {{ type_timestamp() }}) as rounded_timestamp_utc
 
 {%- endmacro %}
 
