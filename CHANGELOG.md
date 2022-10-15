@@ -1,3 +1,6 @@
+# dbt-date v0.6.1
+* New: added `round_timestamp` macro by @jpmmcneill in https://github.com/calogica/dbt-date/pull/84
+
 # dbt-date v0.6.0
 * Move to dbt-utils 0.9.0
 * Remove references to deprecated dbt-utils cross-db macros by @clausherther in https://github.com/calogica/dbt-date/pull/79
