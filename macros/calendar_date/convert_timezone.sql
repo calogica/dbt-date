@@ -5,11 +5,9 @@
 {%- endmacro -%}
 
 {% macro default__convert_timezone(column, target_tz, source_tz) -%}
-{%- if not source_tz -%}
-cast(convert_timezone('{{ target_tz }}', {{ column }}) as {{ type_timestamp() }})
-{%- else -%}
-cast(convert_timezone('{{ source_tz }}', '{{ target_tz }}', {{ column }}) as {{ type_timestamp() }})
-{%- endif -%}
+convert_timezone('{{ source_tz }}', '{{ target_tz }}',
+    cast({{ column }} as {{ type_timestamp() }})
+)
 {%- endmacro -%}
 
 {%- macro bigquery__convert_timezone(column, target_tz, source_tz=None) -%}
@@ -24,11 +22,10 @@ from_utc_timestamp(
 {%- endmacro -%}
 
 {% macro postgres__convert_timezone(column, target_tz, source_tz) -%}
-{%- if source_tz -%}
-cast({{ column }} at time zone '{{ source_tz }}' at time zone '{{ target_tz }}' as {{ type_timestamp() }})
-{%- else -%}
-cast({{ column }} at time zone '{{ target_tz }}' as {{ type_timestamp() }})
-{%- endif -%}
+cast(
+    cast({{ column }} as {{ type_timestamp() }})
+        at time zone '{{ source_tz }}' at time zone '{{ target_tz }}' as {{ type_timestamp() }}
+)
 {%- endmacro -%}
 
 {%- macro redshift__convert_timezone(column, target_tz, source_tz) -%}
