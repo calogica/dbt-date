@@ -1,3 +1,10 @@
+# dbt-date v0.6.3
+* Switch to dbt-core's implementation of current_timestamp() by @clausherther in https://github.com/calogica/dbt-date/pull/88
+
+# dbt-date v0.6.2
+* Simplify convert from `source_tz` by @clausherther in https://github.com/calogica/dbt-date/pull/86
+* Fix issue of convert_timezone converting timestamps twice for timestamp_tz date types (issue #85, #77, #76  )
+
 # dbt-date v0.6.1
 * New: added `round_timestamp` macro by @jpmmcneill in https://github.com/calogica/dbt-date/pull/84
 
