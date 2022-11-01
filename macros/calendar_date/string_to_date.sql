@@ -1,11 +1,11 @@
 {# 
-    currently supports dates stored like 'Apr 1, 2022'
+    currently supports dates stored like 'Apr 1, 2022' -> 'Mon D, YYYY'
     other formats to be covered: 
-    - 'Apr 01, 2022' -> 'MMM D, YYYY'
+    - 'Apr 01, 2022' -> 'Mon DD, YYYY'
     - 'April 1, 2022' -> 'Month D, YYYY'
     - 'April 01, 2022' -> 'Month DD, YYYY'
     - '1 April 2022' -> 'D Month YYYY'
-    - '1 Apr 2022' -> 'D MMM YYYY'
+    - '1 Apr 2022' -> 'D Mon YYYY'
     - '4/1/22' -> 'M/D/YY'
     - '4/1/2022' -> 'M/D/YYYY'
     - '04/01/22' -> 'MM/DD/YY'
@@ -19,8 +19,12 @@
 
     Anything else?
 #}
+-- months are same Mon vs Month for
+-- BQ
+-- snowlfkae
 
-{%- macro string_to_date(date_string, format='MMM D, YYYY') -%}
+
+{%- macro string_to_date(date_string, format='Mon DD, YYYY') -%}
     {{ adapter.dispatch('string_to_date', 'dbt_date') (date_string, format) }}
 {%- endmacro -%}
 
@@ -29,11 +33,25 @@ cast('{{ date_string }}' as date)
 {%- endmacro -%}
 
 {%- macro bigquery__string_to_date(date_string, format) -%}
+{% if format|lower[:3] = 'mon' %}
 parse_date("%b %e, %Y", '{{ date_string }}')
-{# 
-    %B instead of %b for full month name
-    %d instead of %e if single-digit days are padded with a '0' 
-#}
+{% elif format|lower[:5] = 'd mon' or format|lower[:6] = 'dd mon' %}
+parse_date("%e %b %Y", '{{ date_string }}')
+
+{% elif format|lower in ('m/d/yy', 'mm/dd/yy') %}
+parse_date("%D", '{{ date_string }}')
+{% elif format|lower in ('m/d/yyyy', 'mm/dd/yyyy') %}
+parse_date("%m/%e/%Y", '{{ date_string }}')
+
+{% elif format|lower in ('d/m/yy', 'dd/mm/yy') %}
+parse_date("%e/%m/%y", '{{ date_string }}')
+{% elif format|lower in ('d/m/yyyy', 'dd/mm/yyyy') %}
+parse_date("%e/%m/%Y", '{{ date_string }}')
+
+{% else %}
+parse_date("%F", '{{ date_string }}')
+{% endf %}
+
 {%- endmacro -%}
 
 {%- macro snowflake__string_to_date(date_string, format) -%}
