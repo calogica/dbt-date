@@ -4,7 +4,7 @@
 {%- endmacro -%}
 
 {%- macro default__week_start(date) -%}
-cast({{ dbt_utils.date_trunc('week', date) }} as date)
+cast({{ date_trunc('week', date) }} as date)
 {%- endmacro %}
 
 {%- macro snowflake__week_start(date) -%}
@@ -13,10 +13,10 @@ cast({{ dbt_utils.date_trunc('week', date) }} as date)
         dbt_date.day_of_week returns 1, so we subtract 1 to get a 0 offset
     #}
     {% set off_set = dbt_date.day_of_week(date, isoweek=False) ~ " - 1" %}
-    cast({{ dbt_utils.dateadd("day", "-1 * (" ~ off_set ~ ")", date) }} as date)
+    cast({{ dateadd("day", "-1 * (" ~ off_set ~ ")", date) }} as date)
 {%- endmacro %}
 
 {%- macro postgres__week_start(date) -%}
 -- Sunday as week start date
-cast({{ dbt_utils.dateadd('day', -1, dbt_utils.date_trunc('week', dbt_utils.dateadd('day', 1, date))) }} as date)
+cast({{ dateadd('day', -1, date_trunc('week', dateadd('day', 1, date))) }} as date)
 {%- endmacro %}

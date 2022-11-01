@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/calogica/dbt-date/tree/main.svg?style=svg)](https://circleci.com/gh/calogica/dbt-date/tree/main)
+
 # dbt-date
 
 Extension package for [**dbt**](https://github.com/dbt-labs/dbt) to handle date logic and calendar functionality.
@@ -9,7 +11,7 @@ Include in `packages.yml`
 ```yaml
 packages:
   - package: calogica/dbt_date
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.6.0", "<0.7.0"]
     # <see https://github.com/calogica/dbt-date/releases/latest> for the latest version tag
 ```
 
