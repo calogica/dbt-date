@@ -18,6 +18,7 @@
     - '01/04/2022' -> 'DD/MM/YYYY'
 
     Anything else?
+    ' DD-MON-YYYY'
 #}
 -- months are same Mon vs Month for
 -- BQ
@@ -29,24 +30,41 @@
 {%- endmacro -%}
 
 {%- macro default__string_to_date(date_string, format) -%}
+
+{% if format = %}
+
 cast('{{ date_string }}' as date)
 {%- endmacro -%}
 
 {%- macro bigquery__string_to_date(date_string, format) -%}
+
 {% if format|lower[:3] = 'mon' %}
+-- Ex: Apr(il) (0)1, 2022
 parse_date("%b %e, %Y", '{{ date_string }}')
+
 {% elif format|lower[:5] = 'd mon' or format|lower[:6] = 'dd mon' %}
+-- Ex: (0)1 Apr(il), 2022
 parse_date("%e %b %Y", '{{ date_string }}')
 
 {% elif format|lower in ('m/d/yy', 'mm/dd/yy') %}
+-- Ex: (0)4/(0)1/22
 parse_date("%D", '{{ date_string }}')
+
 {% elif format|lower in ('m/d/yyyy', 'mm/dd/yyyy') %}
+-- Ex: (0)4/(0)1/2022
 parse_date("%m/%e/%Y", '{{ date_string }}')
 
 {% elif format|lower in ('d/m/yy', 'dd/mm/yy') %}
+-- Ex: (0)1/(4)/22
 parse_date("%e/%m/%y", '{{ date_string }}')
+
 {% elif format|lower in ('d/m/yyyy', 'dd/mm/yyyy') %}
+-- Ex: (0)1/(4)/2022
 parse_date("%e/%m/%Y", '{{ date_string }}')
+
+{% elif format|lower in ('dd-mon-yyyy', 'd-mon-yyyy') %}
+-- Ex: (0)1-APR-2022
+parse_date("%e-%b-%Y", '{{ date_string }}')
 
 {% else %}
 parse_date("%F", '{{ date_string }}')
@@ -55,11 +73,39 @@ parse_date("%F", '{{ date_string }}')
 {%- endmacro -%}
 
 {%- macro snowflake__string_to_date(date_string, format) -%}
+
+{% if format|lower[:3] = 'mon' %}
+-- Ex: Apr(il) (0)1, 2022
 date('{{ date_string }}', 'mon dd, yyyy')
-{# 
-    no native format for full month name, will have to left(split_part(position: first, delimiter=':'), 3) for the abbreviation
-    dd works for 1 or 2 digit-days
-#}
+
+{% elif format|lower[:5] = 'd mon' or format|lower[:6] = 'dd mon' %}
+-- Ex: (0)1 Apr(il), 2022
+date('{{ date_string }}', 'dd mon, yyyy')
+
+{% elif format|lower in ('m/d/yy', 'mm/dd/yy') %}
+-- Ex: (0)4/(0)1/22
+date('{{ date_string }}', 'mm/dd/yy')
+
+{% elif format|lower in ('m/d/yyyy', 'mm/dd/yyyy') %}
+-- Ex: (0)4/(0)1/2022
+date('{{ date_string }}', 'mm/dd/yyyy')
+
+{% elif format|lower in ('d/m/yy', 'dd/mm/yy') %}
+-- Ex: (0)1/(4)/22
+date('{{ date_string }}', 'dd/mm/yy')
+
+{% elif format|lower in ('d/m/yyyy', 'dd/mm/yyyy') %}
+-- Ex: (0)1/(4)/2022
+date('{{ date_string }}', 'mm/dd/yyyy')
+
+{% elif format|lower in ('dd-mon-yyyy', 'd-mon-yyyy') %}
+-- Ex: (0)1-APR-2022
+date('{{ date_string }}', 'dd-mon-yyyy')
+
+{% else %}
+date('{{ date_string }}', 'auto')
+{% endf %}
+
 {%- endmacro -%}
 
 {%- macro spark__string_to_date(date_string, format) -%}
