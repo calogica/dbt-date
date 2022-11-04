@@ -1,4 +1,4 @@
-{%- macro string_to_date(date_string, format='Mon DD, YYYY') -%}
+{%- macro string_to_date(date_string, format='yyyy-mm-dd') -%}
     {{ adapter.dispatch('string_to_date', 'dbt_date') (date_string, format) }}
 {%- endmacro -%}
 
