@@ -63,55 +63,42 @@ To run the tests:
 
 ### Calendar Date
 
-- [dbt-date](#dbt-date)
-  - [Variables](#variables)
-  - [Integration Tests (Developers Only)](#integration-tests-developers-only)
-  - [Available Tests](#available-tests)
-  - [Available Macros](#available-macros)
-    - [Date Dimension](#date-dimension)
-    - [Calendar Date](#calendar-date)
-  - [Fiscal Date](#fiscal-date)
-  - [Documentation](#documentation)
-    - [get_base_dates(`start_date=None, end_date=None, n_dateparts=None, datepart="day"`)](#get_base_datesstart_datenone-end_datenone-n_datepartsnone-datepartday)
-    - [get_date_dimension(`start_date, end_date`)](#get_date_dimensionstart_date-end_date)
-    - [Fiscal Periods](#fiscal-periods)
-    - [get_fiscal_periods(`dates, year_end_month, week_start_day, shift_year=1`)](#get_fiscal_periodsdates-year_end_month-week_start_day-shift_year1)
-    - [Date](#date)
-    - [convert_timezone( `column, target_tz=None, source_tz=None`)](#convert_timezone-column-target_tznone-source_tznone)
-    - [date_part(`datepart, date`)](#date_partdatepart-date)
-    - [day_name(`date, short=True`)](#day_namedate-shorttrue)
-    - [day_of_month(`date`)](#day_of_monthdate)
-    - [day_of_week(`date, isoweek=true`)](#day_of_weekdate-isoweektrue)
-    - [day_of_year(`date`)](#day_of_yeardate)
-    - [from_unixtimestamp(`epochs, format="seconds"`)](#from_unixtimestampepochs-formatseconds)
-    - [iso_week_end(`date=None, tz=None`)](#iso_week_enddatenone-tznone)
-    - [iso_week_of_year(`date=None, tz=None`)](#iso_week_of_yeardatenone-tznone)
-    - [iso_week_start(`date=None, tz=None`)](#iso_week_startdatenone-tznone)
-    - [last_month_name(`short=True, tz=None`)](#last_month_nameshorttrue-tznone)
-    - [last_month_number(`tz=None`)](#last_month_numbertznone)
-    - [last_month(`tz=None`)](#last_monthtznone)
-    - [last_week(`tz=None`)](#last_weektznone)
-    - [month_name(`date, short=True, tz=None`)](#month_namedate-shorttrue-tznone)
-    - [n_days_ago(`n, date=None, tz=None`)](#n_days_agon-datenone-tznone)
-    - [n_days_away(`n, date=None, tz=None`)](#n_days_awayn-datenone-tznone)
-    - [n_months_ago(`n, tz=None`)](#n_months_agon-tznone)
-    - [n_months_away(`n, tz=None`)](#n_months_awayn-tznone)
-    - [n_weeks_ago(`n, tz=None`)](#n_weeks_agon-tznone)
-    - [n_weeks_away(`n, tz=None`)](#n_weeks_awayn-tznone)
-    - [next_month_name(`short=True, tz=None`)](#next_month_nameshorttrue-tznone)
-    - [next_month_number(`tz=None`)](#next_month_numbertznone)
-    - [next_month(`tz=None`)](#next_monthtznone)
-    - [next_week(`tz=None`)](#next_weektznone)
-    - [now(`tz=None`)](#nowtznone)
-    - [periods_since(`date_col, period_name='day', tz=None`)](#periods_sincedate_col-period_nameday-tznone)
-    - [string_to_date(`date_string, format='yyyy-mm-dd'`)](#string_to_datedate_string-formatyyyy-mm-dd)
-    - [to_unixtimestamp(`timestamp`)](#to_unixtimestamptimestamp)
-    - [today(`tz=None`)](#todaytznone)
-    - [tomorrow(`date=None, tz=None`)](#tomorrowdatenone-tznone)
-    - [week_end(`date=None, tz=None`)](#week_enddatenone-tznone)
-    - [week_of_year(`date=None, tz=None`)](#week_of_yeardatenone-tznone)
-    - [week_start(`date=None, tz=None`)](#week_startdatenone-tznone)
-    - [yesterday(`date=None, tz=None`)](#yesterdaydatenone-tznone)
+- [convert_timezone](#convert_timezone-column-target_tznone-source_tznone)
+- [date_part](#date_partdatepart-date)
+- [day_name](#day_namedate-shorttrue)
+- [day_of_month](#day_of_monthdate)
+- [day_of_week](#day_of_weekdate-isoweektrue)
+- [day_of_year](#day_of_yeardate)
+- [from_unixtimestamp](#from_unixtimestampepochs-formatseconds)
+- [iso_week_end](#iso_week_enddatenone-tznone)
+- [iso_week_of_year](#iso_week_of_yeardatenone-tznone)
+- [iso_week_start](#iso_week_startdatenone-tznone)
+- [last_month_name](#last_month_nameshorttrue-tznone)
+- [last_month_number](#last_month_numbertznone)
+- [last_month](#last_monthtznone)
+- [last_week](#last_weektznone)
+- [month_name](#month_namedate-shorttrue-tznone)
+- [n_days_ago](#n_days_agon-datenone-tznone)
+- [n_days_away](#n_days_awayn-datenone-tznone)
+- [n_months_ago](#n_months_agon-tznone)
+- [n_months_away](#n_months_awayn-tznone)
+- [n_weeks_ago](#n_weeks_agon-tznone)
+- [n_weeks_away](#n_weeks_awayn-tznone)
+- [next_month_name](#next_month_nameshorttrue-tznone)
+- [next_month_number](#next_month_numbertznone)
+- [next_month](#next_monthtznone)
+- [next_week](#next_weektznone)
+- [now](#nowtznone)
+- [periods_since](#periods_sincedate_col-period_nameday-tznone)
+- [string_to_date(`date_string, format='yyyy-mm-dd'`)](#string_to_datedate_string-formatyyyy-mm-dd)
+- [round_timestamp](#round_timestamptimestamp)
+- [to_unixtimestamp](#to_unixtimestamptimestamp)
+- [today](#todaytznone)
+- [tomorrow](#tomorrowdatenone-tznone)
+- [week_end](#week_enddatenone-tznone)
+- [week_of_year](#week_of_yeardatenone-tznone)
+- [week_start](#week_startdatenone-tznone)
+- [yesterday](#yesterdaydatenone-tznone)
 
 ## Fiscal Date
 
@@ -634,6 +621,38 @@ or, optionally, you can override the default timezone:
 
 ```sql
 {{ dbt_date.periods_since("my_timestamp_column", period_name="minute", tz="UTC" }}
+```
+
+### [round_timestamp](macros/calendar_date/round_timestamp.sql)(`timestamp`)
+
+Rounds the given timestamp or date to the nearest date (return type is `timestamp`).
+
+```sql
+select
+{{ dbt_date.round_timestamp("timestamp_col") }} as nearest_date
+...
+```
+
+A few examples:
+
+```sql
+{{ dbt_date.round_timestamp("'2022-02-05 18:45:15'")}}
+-- results in 2022-02-06
+```
+
+```sql
+{{ dbt_date.round_timestamp("'2022-02-05 11:45:15'")}}
+-- results in 2022-02-05
+```
+
+```sql
+{{ dbt_date.round_timestamp("'2022-02-05 12:00:00'")}}
+-- results in 2022-02-06
+```
+
+```sql
+{{ dbt_date.round_timestamp("'2022-02-05 00:00:00'")}}
+-- results in 2022-02-05
 ```
 
 ### [string_to_date](macros/calendar_date/string_to_date.sql)(`date_string, format='yyyy-mm-dd'`)
