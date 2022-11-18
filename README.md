@@ -4,8 +4,6 @@
 
 Extension package for [**dbt**](https://github.com/dbt-labs/dbt) to handle date logic and calendar functionality.
 
-FYI: this package includes [**dbt-utils**](https://github.com/dbt-labs/dbt-utils) so there"s no need to also import dbt-utils in your local project. (In fact, you may get an error if you do.)
-
 Include in `packages.yml`
 
 ```yaml
@@ -15,7 +13,13 @@ packages:
     # <see https://github.com/calogica/dbt-date/releases/latest> for the latest version tag
 ```
 
-Note: we no longer include `spark_utils` in this package to avoid versioning conflicts. If you are running this package on non-core (Snowflake, BigQuery, Redshift, Postgres) platforms, you will need to use a package like `spark_utils` to shim macros.
+This package supports:
+
+* Postgres
+* Snowflake
+* BigQuery
+
+For other platforms, you will have to include a shim package for the platform, such as `spark-utils`, or `tsql-utils`.
 
 For example, in `packages.yml`, you will need to include the relevant package:
 
@@ -43,65 +47,54 @@ vars:
 You may specify [any valid timezone string](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in place of `America/Los_Angeles`.
 For example, use `America/New_York` for East Coast Time.
 
-## Integration Tests (Developers Only)
-
-This project contains integration tests for all test macros in a separate `integration_tests` dbt project contained in this repo.
-
-To run the tests:
-
-1. You will need a profile called `integration_tests` in `~/.dbt/profiles.yml` pointing to a writable database. We only support postgres, BigQuery and Snowflake.
-2. Then, from within the `integration_tests` folder, run `dbt build` to run the test models in `integration_tests/models/schema_tests/` and run the tests specified in `integration_tests/models/schema_tests/schema.yml`
-
-## Available Tests
-
 ## Available Macros
 
 ### Date Dimension
 
-- [get_base_dates](#get_base_datesstart_datenone-end_datenone-n_datepartsnone-datepartday)
-- [get_date_dimension](#get_date_dimensionstart_date-end_date)
+* [get_base_dates](#get_base_datesstart_datenone-end_datenone-n_datepartsnone-datepartday)
+* [get_date_dimension](#get_date_dimensionstart_date-end_date)
 
 ### Calendar Date
 
-- [convert_timezone](#convert_timezone-column-target_tznone-source_tznone)
-- [date_part](#date_partdatepart-date)
-- [day_name](#day_namedate-shorttrue)
-- [day_of_month](#day_of_monthdate)
-- [day_of_week](#day_of_weekdate-isoweektrue)
-- [day_of_year](#day_of_yeardate)
-- [from_unixtimestamp](#from_unixtimestampepochs-formatseconds)
-- [iso_week_end](#iso_week_enddatenone-tznone)
-- [iso_week_of_year](#iso_week_of_yeardatenone-tznone)
-- [iso_week_start](#iso_week_startdatenone-tznone)
-- [last_month_name](#last_month_nameshorttrue-tznone)
-- [last_month_number](#last_month_numbertznone)
-- [last_month](#last_monthtznone)
-- [last_week](#last_weektznone)
-- [month_name](#month_namedate-shorttrue-tznone)
-- [n_days_ago](#n_days_agon-datenone-tznone)
-- [n_days_away](#n_days_awayn-datenone-tznone)
-- [n_months_ago](#n_months_agon-tznone)
-- [n_months_away](#n_months_awayn-tznone)
-- [n_weeks_ago](#n_weeks_agon-tznone)
-- [n_weeks_away](#n_weeks_awayn-tznone)
-- [next_month_name](#next_month_nameshorttrue-tznone)
-- [next_month_number](#next_month_numbertznone)
-- [next_month](#next_monthtznone)
-- [next_week](#next_weektznone)
-- [now](#nowtznone)
-- [periods_since](#periods_sincedate_col-period_nameday-tznone)
-- [round_timestamp](#round_timestamptimestamp)
-- [to_unixtimestamp](#to_unixtimestamptimestamp)
-- [today](#todaytznone)
-- [tomorrow](#tomorrowdatenone-tznone)
-- [week_end](#week_enddatenone-tznone)
-- [week_of_year](#week_of_yeardatenone-tznone)
-- [week_start](#week_startdatenone-tznone)
-- [yesterday](#yesterdaydatenone-tznone)
+* [convert_timezone](#convert_timezone-column-target_tznone-source_tznone)
+* [date_part](#date_partdatepart-date)
+* [day_name](#day_namedate-shorttrue)
+* [day_of_month](#day_of_monthdate)
+* [day_of_week](#day_of_weekdate-isoweektrue)
+* [day_of_year](#day_of_yeardate)
+* [from_unixtimestamp](#from_unixtimestampepochs-formatseconds)
+* [iso_week_end](#iso_week_enddatenone-tznone)
+* [iso_week_of_year](#iso_week_of_yeardatenone-tznone)
+* [iso_week_start](#iso_week_startdatenone-tznone)
+* [last_month_name](#last_month_nameshorttrue-tznone)
+* [last_month_number](#last_month_numbertznone)
+* [last_month](#last_monthtznone)
+* [last_week](#last_weektznone)
+* [month_name](#month_namedate-shorttrue-tznone)
+* [n_days_ago](#n_days_agon-datenone-tznone)
+* [n_days_away](#n_days_awayn-datenone-tznone)
+* [n_months_ago](#n_months_agon-tznone)
+* [n_months_away](#n_months_awayn-tznone)
+* [n_weeks_ago](#n_weeks_agon-tznone)
+* [n_weeks_away](#n_weeks_awayn-tznone)
+* [next_month_name](#next_month_nameshorttrue-tznone)
+* [next_month_number](#next_month_numbertznone)
+* [next_month](#next_monthtznone)
+* [next_week](#next_weektznone)
+* [now](#nowtznone)
+* [periods_since](#periods_sincedate_col-period_nameday-tznone)
+* [round_timestamp](#round_timestamptimestamp)
+* [to_unixtimestamp](#to_unixtimestamptimestamp)
+* [today](#todaytznone)
+* [tomorrow](#tomorrowdatenone-tznone)
+* [week_end](#week_enddatenone-tznone)
+* [week_of_year](#week_of_yeardatenone-tznone)
+* [week_start](#week_startdatenone-tznone)
+* [yesterday](#yesterdaydatenone-tznone)
 
 ## Fiscal Date
 
-- [get_fiscal_periods](#get_fiscal_periodsdates-year_end_month-week_start_day-shift_year1)
+* [get_fiscal_periods](#get_fiscal_periodsdates-year_end_month-week_start_day-shift_year1)
 
 ## Documentation
 
@@ -801,3 +794,12 @@ or, optionally, you can override the default timezone:
 ```sql
 {{ dbt_date.yesterday(tz="America/New_York") }} as date_yesterday
 ```
+
+## Integration Tests (Developers Only)
+
+This project contains integration tests for all test macros in a separate `integration_tests` dbt project contained in this repo.
+
+To run the tests:
+
+1. You will need a profile called `integration_tests` in `~/.dbt/profiles.yml` pointing to a writable database. We only support postgres, BigQuery and Snowflake.
+2. Then, from within the `integration_tests` folder, run `dbt build` to run the test models in `integration_tests/models/schema_tests/` and run the tests specified in `integration_tests/models/schema_tests/schema.yml`
