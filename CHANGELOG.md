@@ -1,3 +1,8 @@
+# dbt-date v0.7.0
+
+## Breaking Changes
+* Removed dependency on dbt-utils by @clausherther in https://github.com/calogica/dbt-date/pull/91
+
 # dbt-date v0.6.3
 * Switch to dbt-core's implementation of current_timestamp() by @clausherther in https://github.com/calogica/dbt-date/pull/88
 
