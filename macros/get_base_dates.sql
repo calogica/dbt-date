@@ -17,7 +17,7 @@
 with date_spine as
 (
 
-    {{ dbt_utils.date_spine(
+    {{ dbt_date.date_spine(
         datepart=datepart,
         start_date=start_date,
         end_date=end_date,
@@ -46,7 +46,7 @@ from
 with date_spine as
 (
 
-    {{ dbt_utils.date_spine(
+    {{ dbt_date.date_spine(
         datepart=datepart,
         start_date=start_date,
         end_date=end_date,
