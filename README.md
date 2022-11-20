@@ -9,7 +9,7 @@ Include in `packages.yml`
 ```yaml
 packages:
   - package: calogica/dbt_date
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
     # <see https://github.com/calogica/dbt-date/releases/latest> for the latest version tag
 ```
 
@@ -28,11 +28,11 @@ For example, in `packages.yml`, you will need to include the relevant package:
     version: <latest or range>
 ```
 
-And reference in the dispatch list for `dbt_utils` in `dbt_project.yml`:
+And reference in the dispatch list for `dbt_date` in `dbt_project.yml`:
 
 ```yaml
 vars:
-    dbt_utils_dispatch_list: [spark_utils]
+    dbt_date_dispatch_list: [spark_utils]
 ```
 
 ## Variables
