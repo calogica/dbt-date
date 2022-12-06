@@ -82,3 +82,24 @@
     {%- endif -%}
 
 {%- endmacro %}
+
+{%- macro spark__day_of_week(date, isoweek) -%}
+
+    {# Spark is 1-7, starting w/ Sunday #}
+    
+    {%- if isoweek -%}
+        {%- set dow_part = 'DAYOFWEEK_ISO' -%}
+    {%- else -%}
+        {%- set dow_part = 'DAYOFWEEK' -%}
+    {%- endif -%}
+    
+    {{ dbt_date.date_part(dow_part, date) }}
+    
+{%- endmacro %}
+
+{% macro databricks__day_of_week(date, isoweek) -%}
+
+    {# Databricks is the same as Spark #}
+    {{ return(spark__day_of_week(date, isoweek)) }}
+    
+{%- endmacro %}
