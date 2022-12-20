@@ -27,7 +27,10 @@ select
     -- These columns are here to make sure these macros get run during testing:
     {{ dbt_date.last_month_number() }} as last_month_number,
     {{ dbt_date.last_month_name(short=False) }} as last_month_name,
-    {{ dbt_date.last_month_name(short=True) }} as last_month_name_short
+    {{ dbt_date.last_month_name(short=True) }} as last_month_name_short,
+    {{ dbt_date.next_month_number() }} as next_month_number,
+    {{ dbt_date.next_month_name(short=False) }} as next_month_name,
+    {{ dbt_date.next_month_name(short=True) }} as next_month_name_short
 
 union all
 
@@ -58,7 +61,10 @@ select
     -- These columns are here to make sure these macros get run during testing:
     {{ dbt_date.last_month_number() }} as last_month_number,
     {{ dbt_date.last_month_name(short=False) }} as last_month_name,
-    {{ dbt_date.last_month_name(short=True) }} as last_month_name_short
+    {{ dbt_date.last_month_name(short=True) }} as last_month_name_short,
+    {{ dbt_date.next_month_number() }} as next_month_number,
+    {{ dbt_date.next_month_name(short=False) }} as next_month_name,
+    {{ dbt_date.next_month_name(short=True) }} as next_month_name_short
 
 {%- endmacro %}
 
