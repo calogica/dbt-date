@@ -16,13 +16,21 @@ select
     cast('2020-11-23' as date) as iso_week_start_date,
     cast('2020-11-29' as date) as iso_week_end_date,
     48 as iso_week_of_year,
+    11 as month_number,
     'November' as month_name,
     'Nov' as month_name_short,
     1623076520 as unix_epoch,
     cast('{{ get_test_timestamps()[0] }}' as {{ type_timestamp() }}) as time_stamp,
     cast('{{ get_test_timestamps()[1] }}' as {{ type_timestamp() }}) as time_stamp_utc,
     cast('2021-06-07' as {{ type_timestamp() }}) as rounded_timestamp,
-    cast('2021-06-08' as {{ type_timestamp() }}) as rounded_timestamp_utc
+    cast('2021-06-08' as {{ type_timestamp() }}) as rounded_timestamp_utc,
+    -- These columns are here to make sure these macros get run during testing:
+    {{ dbt_date.last_month_number() }} as last_month_number,
+    {{ dbt_date.last_month_name(short=False) }} as last_month_name,
+    {{ dbt_date.last_month_name(short=True) }} as last_month_name_short,
+    {{ dbt_date.next_month_number() }} as next_month_number,
+    {{ dbt_date.next_month_name(short=False) }} as next_month_name,
+    {{ dbt_date.next_month_name(short=True) }} as next_month_name_short
 
 union all
 
@@ -42,14 +50,21 @@ select
     cast('2020-11-30' as date) as iso_week_start_date,
     cast('2020-12-06' as date) as iso_week_end_date,
     49 as iso_week_of_year,
+    12 as month_number,
     'December' as month_name,
     'Dec' as month_name_short,
-    {# 1623051320 as unix_epoch, #}
     1623076520 as unix_epoch,
     cast('{{ get_test_timestamps()[0] }}' as {{ type_timestamp() }}) as time_stamp,
     cast('{{ get_test_timestamps()[1] }}' as {{ type_timestamp() }}) as time_stamp_utc,
     cast('2021-06-07' as {{ type_timestamp() }}) as rounded_timestamp,
-    cast('2021-06-08' as {{ type_timestamp() }}) as rounded_timestamp_utc
+    cast('2021-06-08' as {{ type_timestamp() }}) as rounded_timestamp_utc,
+    -- These columns are here to make sure these macros get run during testing:
+    {{ dbt_date.last_month_number() }} as last_month_number,
+    {{ dbt_date.last_month_name(short=False) }} as last_month_name,
+    {{ dbt_date.last_month_name(short=True) }} as last_month_name_short,
+    {{ dbt_date.next_month_number() }} as next_month_number,
+    {{ dbt_date.next_month_name(short=False) }} as next_month_name,
+    {{ dbt_date.next_month_name(short=True) }} as next_month_name_short
 
 {%- endmacro %}
 
