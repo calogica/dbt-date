@@ -1,3 +1,7 @@
+# dbt-date v0.7.1
+
+* Fix calls to last_month and next_month by @clausherther in https://github.com/calogica/dbt-date/pull/95
+
 # dbt-date v0.7.0
 
 ## Breaking Changes
