@@ -3,5 +3,5 @@
 {%- endmacro %}
 
 {%- macro redshift__day_of_month(date) -%}
-cast({{ dbt_date.date_part('day', date) }} as {{ type_bigint() }})
+cast({{ dbt_date.date_part('day', date) }} as {{ dbt.type_bigint() }})
 {%- endmacro %}

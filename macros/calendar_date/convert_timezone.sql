@@ -6,7 +6,7 @@
 
 {% macro default__convert_timezone(column, target_tz, source_tz) -%}
 convert_timezone('{{ source_tz }}', '{{ target_tz }}',
-    cast({{ column }} as {{ type_timestamp() }})
+    cast({{ column }} as {{ dbt.type_timestamp() }})
 )
 {%- endmacro -%}
 
@@ -23,8 +23,8 @@ from_utc_timestamp(
 
 {% macro postgres__convert_timezone(column, target_tz, source_tz) -%}
 cast(
-    cast({{ column }} as {{ type_timestamp() }})
-        at time zone '{{ source_tz }}' at time zone '{{ target_tz }}' as {{ type_timestamp() }}
+    cast({{ column }} as {{ dbt.type_timestamp() }})
+        at time zone '{{ source_tz }}' at time zone '{{ target_tz }}' as {{ dbt.type_timestamp() }}
 )
 {%- endmacro -%}
 

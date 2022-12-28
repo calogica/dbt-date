@@ -4,11 +4,11 @@
 {%- endmacro -%}
 
 {%- macro default__week_of_year(date) -%}
-cast({{ dbt_date.date_part('week', date) }} as {{ type_int() }})
+cast({{ dbt_date.date_part('week', date) }} as {{ dbt.type_int() }})
 {%- endmacro %}
 
 {%- macro postgres__week_of_year(date) -%}
 {# postgresql 'week' returns isoweek. Use to_char instead.
    WW = the first week starts on the first day of the year #}
-cast(to_char({{ date }}, 'WW') as {{ type_int() }})
+cast(to_char({{ date }}, 'WW') as {{ dbt.type_int() }})
 {%- endmacro %}

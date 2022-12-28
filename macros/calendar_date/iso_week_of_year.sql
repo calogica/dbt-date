@@ -4,7 +4,7 @@
 {%- endmacro -%}
 
 {%- macro _iso_week_of_year(date, week_type) -%}
-cast({{ dbt_date.date_part(week_type, date) }} as {{ type_int() }})
+cast({{ dbt_date.date_part(week_type, date) }} as {{ dbt.type_int() }})
 {%- endmacro %}
 
 {%- macro default__iso_week_of_year(date) -%}

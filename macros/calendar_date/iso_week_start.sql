@@ -4,7 +4,7 @@
 {%- endmacro -%}
 
 {%- macro _iso_week_start(date, week_type) -%}
-cast({{ date_trunc(week_type, date) }} as date)
+cast({{ dbt.date_trunc(week_type, date) }} as date)
 {%- endmacro %}
 
 {%- macro default__iso_week_start(date) -%}
