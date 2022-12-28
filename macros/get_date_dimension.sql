@@ -10,8 +10,8 @@ dates_with_prior_year_dates as (
 
     select
         cast(d.date_day as date) as date_day,
-        cast({{ dateadd('year', -1 , 'd.date_day') }} as date) as prior_year_date_day,
-        cast({{ dateadd('day', -364 , 'd.date_day') }} as date) as prior_year_over_year_date_day
+        cast({{ dbt.dateadd('year', -1 , 'd.date_day') }} as date) as prior_year_date_day,
+        cast({{ dbt.dateadd('day', -364 , 'd.date_day') }} as date) as prior_year_over_year_date_day
     from
     	base_dates d
 
@@ -44,22 +44,22 @@ select
     {{ dbt_date.week_of_year('d.prior_year_over_year_date_day') }} as prior_year_week_of_year,
     {{ dbt_date.iso_week_of_year('d.prior_year_over_year_date_day') }} as prior_year_iso_week_of_year,
 
-    cast({{ dbt_date.date_part('month', 'd.date_day') }} as {{ type_int() }}) as month_of_year,
+    cast({{ dbt_date.date_part('month', 'd.date_day') }} as {{ dbt.type_int() }}) as month_of_year,
     {{ dbt_date.month_name('d.date_day', short=false) }}  as month_name,
     {{ dbt_date.month_name('d.date_day', short=true) }}  as month_name_short,
 
-    cast({{ date_trunc('month', 'd.date_day') }} as date) as month_start_date,
+    cast({{ dbt.date_trunc('month', 'd.date_day') }} as date) as month_start_date,
     cast({{ last_day('d.date_day', 'month') }} as date) as month_end_date,
 
-    cast({{ date_trunc('month', 'd.prior_year_date_day') }} as date) as prior_year_month_start_date,
+    cast({{ dbt.date_trunc('month', 'd.prior_year_date_day') }} as date) as prior_year_month_start_date,
     cast({{ last_day('d.prior_year_date_day', 'month') }} as date) as prior_year_month_end_date,
 
-    cast({{ dbt_date.date_part('quarter', 'd.date_day') }} as {{ type_int() }}) as quarter_of_year,
-    cast({{ date_trunc('quarter', 'd.date_day') }} as date) as quarter_start_date,
+    cast({{ dbt_date.date_part('quarter', 'd.date_day') }} as {{ dbt.type_int() }}) as quarter_of_year,
+    cast({{ dbt.date_trunc('quarter', 'd.date_day') }} as date) as quarter_start_date,
     cast({{ last_day('d.date_day', 'quarter') }} as date) as quarter_end_date,
 
-    cast({{ dbt_date.date_part('year', 'd.date_day') }} as {{ type_int() }}) as year_number,
-    cast({{ date_trunc('year', 'd.date_day') }} as date) as year_start_date,
+    cast({{ dbt_date.date_part('year', 'd.date_day') }} as {{ dbt.type_int() }}) as year_number,
+    cast({{ dbt.date_trunc('year', 'd.date_day') }} as date) as year_start_date,
     cast({{ last_day('d.date_day', 'year') }} as date) as year_end_date
 from
     dates_with_prior_year_dates d
@@ -74,8 +74,8 @@ dates_with_prior_year_dates as (
 
     select
         cast(d.date_day as date) as date_day,
-        cast({{ dateadd('year', -1 , 'd.date_day') }} as date) as prior_year_date_day,
-        cast({{ dateadd('day', -364 , 'd.date_day') }} as date) as prior_year_over_year_date_day
+        cast({{ dbt.dateadd('year', -1 , 'd.date_day') }} as date) as prior_year_date_day,
+        cast({{ dbt.dateadd('day', -364 , 'd.date_day') }} as date) as prior_year_over_year_date_day
     from
     	base_dates d
 
@@ -108,23 +108,23 @@ select
     {{ dbt_date.week_of_year('d.prior_year_over_year_date_day') }} as prior_year_week_of_year,
     {{ dbt_date.iso_week_of_year('d.prior_year_over_year_date_day') }} as prior_year_iso_week_of_year,
 
-    cast({{ dbt_date.date_part('month', 'd.date_day') }} as {{ type_int() }}) as month_of_year,
+    cast({{ dbt_date.date_part('month', 'd.date_day') }} as {{ dbt.type_int() }}) as month_of_year,
     {{ dbt_date.month_name('d.date_day', short=false) }}  as month_name,
     {{ dbt_date.month_name('d.date_day', short=true) }}  as month_name_short,
 
-    cast({{ date_trunc('month', 'd.date_day') }} as date) as month_start_date,
+    cast({{ dbt.date_trunc('month', 'd.date_day') }} as date) as month_start_date,
     cast({{ last_day('d.date_day', 'month') }} as date) as month_end_date,
 
-    cast({{ date_trunc('month', 'd.prior_year_date_day') }} as date) as prior_year_month_start_date,
+    cast({{ dbt.date_trunc('month', 'd.prior_year_date_day') }} as date) as prior_year_month_start_date,
     cast({{ last_day('d.prior_year_date_day', 'month') }} as date) as prior_year_month_end_date,
 
-    cast({{ dbt_date.date_part('quarter', 'd.date_day') }} as {{ type_int() }}) as quarter_of_year,
-    cast({{ date_trunc('quarter', 'd.date_day') }} as date) as quarter_start_date,
+    cast({{ dbt_date.date_part('quarter', 'd.date_day') }} as {{ dbt.type_int() }}) as quarter_of_year,
+    cast({{ dbt.date_trunc('quarter', 'd.date_day') }} as date) as quarter_start_date,
     {# last_day does not support quarter because postgresql does not support quarter interval. #}
-    cast({{dateadd('day', '-1', dateadd('month', '3', date_trunc('quarter', 'd.date_day')))}} as date) as quarter_end_date,
+    cast({{dbt.dateadd('day', '-1', dbt.dateadd('month', '3', dbt.date_trunc('quarter', 'd.date_day')))}} as date) as quarter_end_date,
 
-    cast({{ dbt_date.date_part('year', 'd.date_day') }} as {{ type_int() }}) as year_number,
-    cast({{ date_trunc('year', 'd.date_day') }} as date) as year_start_date,
+    cast({{ dbt_date.date_part('year', 'd.date_day') }} as {{ dbt.type_int() }}) as year_number,
+    cast({{ dbt.date_trunc('year', 'd.date_day') }} as date) as year_start_date,
     cast({{ last_day('d.date_day', 'year') }} as date) as year_end_date
 from
     dates_with_prior_year_dates d

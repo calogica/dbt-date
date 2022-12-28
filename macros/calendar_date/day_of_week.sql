@@ -57,11 +57,11 @@
     {%- if isoweek -%}
         {%- set dow_part = 'isodow' -%}
         -- Monday(1) to Sunday (7)
-        cast({{ dbt_date.date_part(dow_part, date) }} as {{ type_int() }})
+        cast({{ dbt_date.date_part(dow_part, date) }} as {{ dbt.type_int() }})
     {%- else -%}
         {%- set dow_part = 'dow' -%}
         -- Sunday(1) to Saturday (7)
-        cast({{ dbt_date.date_part(dow_part, date) }} + 1 as {{ type_int() }})
+        cast({{ dbt_date.date_part(dow_part, date) }} + 1 as {{ dbt.type_int() }})
     {%- endif -%}
 
 {%- endmacro %}
@@ -75,10 +75,10 @@
     case
         -- Shift start of week from Sunday (0) to Monday (1)
         when {{ dow }} = 0 then 7
-        else cast({{ dow }} as {{ type_bigint() }})
+        else cast({{ dow }} as {{ dbt.type_bigint() }})
     end
     {%- else -%}
-    cast({{ dow }} + 1 as {{ type_bigint() }})
+    cast({{ dow }} + 1 as {{ dbt.type_bigint() }})
     {%- endif -%}
 
 {%- endmacro %}
