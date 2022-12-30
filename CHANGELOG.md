@@ -1,3 +1,9 @@
+# dbt-date v0.7.2
+
+## Fixes
+* Update refs to dbt-core macros by @clausherther in https://github.com/calogica/dbt-date/pull/97
+* Add dbt prefix to current_timestamp macro by @GtheSheep in https://github.com/calogica/dbt-date/pull/98
+
 # dbt-date v0.7.1
 
 * Fix calls to last_month and next_month by @clausherther in https://github.com/calogica/dbt-date/pull/95
