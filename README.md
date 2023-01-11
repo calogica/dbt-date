@@ -600,19 +600,19 @@ Returns the number of periods since a specified date or to `now`.
 Usage:
 
 ```sql
-{{ dbt_date.periods_since("my_date_column", period_name="day" }}
+{{ dbt_date.periods_since("my_date_column", period_name="day") }}
 ```
 
 or,
 
 ```sql
-{{ dbt_date.periods_since("my_timestamp_column", period_name="minute" }}
+{{ dbt_date.periods_since("my_timestamp_column", period_name="minute") }}
 ```
 
 or, optionally, you can override the default timezone:
 
 ```sql
-{{ dbt_date.periods_since("my_timestamp_column", period_name="minute", tz="UTC" }}
+{{ dbt_date.periods_since("my_timestamp_column", period_name="minute", tz="UTC") }}
 ```
 
 ### [round_timestamp](macros/calendar_date/round_timestamp.sql)(`timestamp`)
