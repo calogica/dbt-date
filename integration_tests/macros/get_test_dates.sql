@@ -57,7 +57,9 @@ select
     '29/11/2020' as date_string_Q,
     'd/m/yyyy' as format_date_Q,
     '29/11/2020' as date_string_R,
-    'dd/mm/yyyy' as format_date_R
+    'dd/mm/yyyy' as format_date_R,
+    cast('2021-06-07' as {{ type_timestamp() }}) as rounded_timestamp,
+    cast('2021-06-08' as {{ type_timestamp() }}) as rounded_timestamp_utc
 
 union all
 
@@ -119,7 +121,9 @@ select
     '1/12/2020' as date_string_Q,
     'd/m/yyyy' as format_date_Q,
     '01/12/2020' as date_string_R,
-    'dd/mm/yyyy' as format_date_R
+    'dd/mm/yyyy' as format_date_R,
+    cast('2021-06-07' as {{ type_timestamp() }}) as rounded_timestamp,
+    cast('2021-06-08' as {{ type_timestamp() }}) as rounded_timestamp_utc
 
 {%- endmacro %}
 

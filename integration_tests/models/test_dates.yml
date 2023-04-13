@@ -37,6 +37,16 @@ models:
             expression: "unix_epoch = {{ dbt_date.to_unixtimestamp('time_stamp_utc') }}"
         - dbt_utils.expression_is_true:
             expression: "time_stamp = {{ dbt_date.convert_timezone('time_stamp_utc') }}"
+        - dbt_utils.expression_is_true:
+            expression: "time_stamp = {{ dbt_date.convert_timezone('time_stamp_utc', source_tz='UTC') }}"
+        # - dbt_utils.expression_is_true:
+        #     expression: "time_stamp_utc = {{ dbt_date.convert_timezone('time_stamp', source_tz='America/Los_Angeles', target_tz='UTC') }}"
+        # - dbt_utils.expression_is_true:
+        #     expression: "time_stamp = {{ dbt_date.convert_timezone('time_stamp', source_tz='America/Los_Angeles', target_tz='America/Los_Angeles') }}"
+        - dbt_utils.expression_is_true:
+            expression: "rounded_timestamp = {{ dbt_date.round_timestamp('time_stamp') }}"
+        - dbt_utils.expression_is_true:
+            expression: "rounded_timestamp_utc = {{ dbt_date.round_timestamp('time_stamp_utc') }}"
 
         - dbt_utils.expression_is_true:
             expression: "date_day = {{ dbt_date.string_to_date('date_string_A', 'format_date_A') }}"
