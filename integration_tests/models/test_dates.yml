@@ -38,6 +38,43 @@ models:
         - dbt_utils.expression_is_true:
             expression: "time_stamp = {{ dbt_date.convert_timezone('time_stamp_utc') }}"
 
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_A', 'format_date_A') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_B', 'format_date_B') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_C', 'format_date_C') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_D', 'format_date_D') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_E', 'format_date_E') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_F', 'format_date_F') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_G', 'format_date_G') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_H', 'format_date_H') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_I', 'format_date_I') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_J', 'format_date_J') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_K', 'format_date_K') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_L', 'format_date_L') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_M', 'format_date_M') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_N', 'format_date_N') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_O', 'format_date_O') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_P', 'format_date_P') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_Q', 'format_date_Q') }}"
+        - dbt_utils.expression_is_true:
+            expression: "date_day = {{ dbt_date.string_to_date('date_string_R', 'format_date_R') }}"
+
     columns:
       - name: date_day
       - name: prior_date_day

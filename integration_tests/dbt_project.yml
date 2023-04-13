@@ -22,7 +22,7 @@ vars:
     "dbt_date:time_zone": "America/Los_Angeles"
 
 quoting:
-    database: false
+    database: true
     identifier: false
     schema: false
 
