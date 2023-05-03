@@ -8,26 +8,54 @@
 
 Development of `dbt-date` (and `dbt-expectations`) is funded by our amazing [sponsors](https://github.com/sponsors/calogica), including our **featured** sponsors:
 
-### aggua (<a href="https://www.aggua.io/" target="_blank">www.aggua.io</a>)
+<table width="80%">
+<tr>
 
-<a href="https://www.aggua.io/" target="_blank"><img width="80%" src="https://uploads-ssl.webflow.com/628f445aa439cdd1dfb160c0/62b4295accb569ec87d751a5_aggua-logo.svg"/></a>
+<td width="40%" valign="top" align="center">
+<p><a href="https://www.aggua.io/" target="_blank">www.aggua.io</a></p>
+<p>
+<a href="https://www.aggua.io/" target="_blank">
+<img width="40%" src="https://uploads-ssl.webflow.com/628f445aa439cdd1dfb160c0/62b4295accb569ec87d751a5_aggua-logo.svg"/>
+</a>
+</p>
+</td>
 
-### Datacoves (<a href="https://datacoves.com/product" target="_blank">datacoves.com</a>)
-
+<td width="40%" valign="top" align="center">
+<p><a href="https://datacoves.com/product" target="_blank">datacoves.com</a></p>
+<p>
 <a href="https://datacoves.com/product" target="_blank">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/datacoves/dbt-coves/blob/main/images/datacoves-dark.png">
   <img alt="Datacoves" src="https://github.com/datacoves/dbt-coves/blob/main/images/datacoves-light.png" width="150">
 </picture>
 </a>
+</p>
+</td>
 
-### Elementary (<a href="https://www.elementary-data.com/" target="_blank">www.elementary-data.com</a>)
+</tr>
 
-<a href="https://www.elementary-data.com/" target="_blank"><img width="80%" src="https://raw.githubusercontent.com/elementary-data/elementary/master/static/header_git.png"/></a>
+<tr>
+<td width="40%" valign="top" align="center">
+<p><a href="https://www.elementary-data.com/" target="_blank">www.elementary-data.com</a></p>
+<p>
+<a href="https://www.elementary-data.com/" target="_blank">
+<img width="40%" src="https://raw.githubusercontent.com/elementary-data/elementary/master/static/header_git.png"/>
+</a>
+</p>
+</td>
 
-### re_data (<a href="https://www.getre.io/" target="_blank">www.getre.io</a>)
+<td width="40%" valign="top" align="center">
+<p><a href="https://www.getre.io/" target="_blank">www.getre.io</a></p>
+<p>
+<a href="https://www.getre.io/" target="_blank">
+<img width="30%" src="https://uploads-ssl.webflow.com/60bdbc7b0c4f5aa1568dc8cc/60df3224a3b3637230f335d6_REDATA%20LOGO%2011.svg"/>
+</a>
+</p>
+</td>
 
-<a href="https://www.getre.io/" target="_blank"><img width="30%" src="https://uploads-ssl.webflow.com/60bdbc7b0c4f5aa1568dc8cc/60df3224a3b3637230f335d6_REDATA%20LOGO%2011.svg"/></a>
+</tr>
+
+</table>
 
 ## Install
 
