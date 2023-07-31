@@ -125,10 +125,10 @@ For example, use `America/New_York` for East Coast Time.
 
 A wrapper around [`dbt_utils.date_spine`](https://github.com/dbt-labs/dbt-utils#date_spine-source) that allows you to specify either `start_date` and `end_date` for your date spine, or specify a number of periods (`n_dateparts`) in the past from today.
 
-Usage:
+Usage to build a daily date dimension for the years 2015 to 2022:
 
 ```sql
-{{ dbt_date.get_base_dates(start_date="2015-01-01", end_date="2022-12-31") }}
+{{ dbt_date.get_base_dates(start_date="2015-01-01", end_date="2023-01-01") }}
 ```
 
 or to build a daily date dimension for the last 3 years:
