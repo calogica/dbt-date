@@ -33,4 +33,7 @@ integration_tests:
       schema: "{{ env_var('SNOWFLAKE_TEST_SCHEMA') }}"
       threads: 10
 
+    duckdb:
+      type: duckdb
+
   target: postgres

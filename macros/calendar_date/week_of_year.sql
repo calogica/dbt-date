@@ -12,3 +12,7 @@ cast({{ dbt_date.date_part('week', date) }} as {{ dbt.type_int() }})
    WW = the first week starts on the first day of the year #}
 cast(to_char({{ date }}, 'WW') as {{ dbt.type_int() }})
 {%- endmacro %}
+
+{%- macro duckdb__week_of_year(date) -%}
+cast(ceil(dayofyear({{ date }}) / 7) as int)
+{%- endmacro %}

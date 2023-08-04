@@ -16,3 +16,7 @@
 {%- set dt = dbt_date.week_start(date) -%}
 {{ dbt_date.n_days_away(6, dt) }}
 {%- endmacro %}
+
+{%- macro duckdb__week_end(date) -%}
+{{ return(dbt_date.postgres__week_end(date)) }}
+{%- endmacro %}

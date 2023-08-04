@@ -82,3 +82,7 @@
     {%- endif -%}
 
 {%- endmacro %}
+
+{%- macro duckdb__day_of_week(date, isoweek) -%}
+{{ return(dbt_date.postgres__day_of_week(date, isoweek)) }}
+{%- endmacro %}
