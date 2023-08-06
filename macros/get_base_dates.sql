@@ -34,8 +34,8 @@ from
 {% macro bigquery__get_base_dates(start_date, end_date, n_dateparts, datepart) %}
 
 {%- if start_date and end_date -%}
-{%- set start_date="cast('" ~ start_date ~ "' as date )" -%}
-{%- set end_date="cast('" ~ end_date ~ "' as date )" -%}
+{%- set start_date="cast('" ~ start_date ~ "' as datetime )" -%}
+{%- set end_date="cast('" ~ end_date ~ "' as datetime )" -%}
 
 {%- elif n_dateparts and datepart -%}
 
