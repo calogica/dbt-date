@@ -41,6 +41,7 @@ This package supports:
 * Postgres
 * Snowflake
 * BigQuery
+* DuckDB
 
 For other platforms, you will have to include a shim package for the platform, such as `spark-utils`, or `tsql-utils`.
 

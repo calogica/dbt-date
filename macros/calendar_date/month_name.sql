@@ -22,3 +22,12 @@
 {%- set f = 'FMMon' if short else 'FMMonth' -%}
     to_char({{ date }}, '{{ f }}')
 {%- endmacro %}
+
+
+{%- macro duckdb__month_name(date, short) -%}
+    {%- if short -%}
+    substr(monthname({{ date }}), 1, 3)
+    {%- else -%}
+    monthname({{ date }})
+    {%- endif -%}
+{%- endmacro %}

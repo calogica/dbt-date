@@ -31,3 +31,7 @@ cast(
 {%- macro redshift__convert_timezone(column, target_tz, source_tz) -%}
 {{ return(dbt_date.default__convert_timezone(column, target_tz, source_tz)) }}
 {%- endmacro -%}
+
+{% macro duckdb__convert_timezone(column, target_tz, source_tz) -%}
+{{ return(dbt_date.postgres__convert_timezone(column, target_tz, source_tz)) }}
+{%- endmacro -%}

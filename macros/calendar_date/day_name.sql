@@ -35,3 +35,11 @@
 {%- set f = 'FMDy' if short else 'FMDay' -%}
     to_char({{ date }}, '{{ f }}')
 {%- endmacro %}
+
+{%- macro duckdb__day_name(date, short) -%}
+    {%- if short -%}
+    substr(dayname({{ date }}), 1, 3)
+    {%- else -%}
+    dayname({{ date }})
+    {%- endif -%}
+{%- endmacro %}

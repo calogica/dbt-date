@@ -20,3 +20,7 @@ cast({{ dbt.date_trunc('week', date) }} as date)
 -- Sunday as week start date
 cast({{ dbt.dateadd('day', -1, dbt.date_trunc('week', dbt.dateadd('day', 1, date))) }} as date)
 {%- endmacro %}
+
+{%- macro duckdb__week_start(date) -%}
+{{ return(dbt_date.postgres__week_start(date)) }}
+{%- endmacro %}
