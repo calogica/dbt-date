@@ -1,3 +1,13 @@
+# dbt-date v0.8.0
+## New Features
+* Add support for dbt-duckdb to the dbt_date package by @jwills in https://github.com/calogica/dbt-date/pull/105
+
+## Docs
+* Update README.md by @JordanZimmitti in https://github.com/calogica/dbt-date/pull/99
+* Update README.md by @tgmof in https://github.com/calogica/dbt-date/pull/104
+
+**Full Changelog**: https://github.com/calogica/dbt-date/compare/0.7.2...0.8.0
+
 # dbt-date v0.7.2
 
 ## Fixes
