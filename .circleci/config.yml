@@ -69,7 +69,7 @@ jobs:
           name: "Run Tests - DuckDB"
           command: |
             . venv/bin/activate
-            dbt build -t duckdb --project_dir $DBT_PROJECT_DIR
+            dbt build -t duckdb --project-dir $DBT_PROJECT_DIR
 
       - store_artifacts:
           path: ./logs
