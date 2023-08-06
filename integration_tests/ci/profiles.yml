@@ -35,5 +35,6 @@ integration_tests:
 
     duckdb:
       type: duckdb
+      path: ":memory:"
 
   target: postgres
