@@ -43,22 +43,6 @@ This package supports:
 * BigQuery
 * DuckDB
 
-For other platforms, you will have to include a shim package for the platform, such as `spark-utils`, or `tsql-utils`.
-
-For example, in `packages.yml`, you will need to include the relevant package:
-
-```yaml
-  - package: dbt-labs/spark_utils
-    version: <latest or range>
-```
-
-And reference in the dispatch list for `dbt_date` in `dbt_project.yml`:
-
-```yaml
-vars:
-    dbt_date_dispatch_list: [spark_utils]
-```
-
 ## Variables
 
 The following variables need to be defined in your `dbt_project.yml` file:
