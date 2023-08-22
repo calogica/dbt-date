@@ -3,3 +3,5 @@ target/
 dbt_packages/
 logs/
 .python-version
+.spark-warehouse
+.hive-metastore
