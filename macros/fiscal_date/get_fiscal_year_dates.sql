@@ -6,7 +6,7 @@
 -- this gets all the dates within a fiscal year
 -- determined by the given year-end-month
 -- ending on the saturday closest to that month's end date
-with date_dimension as (
+with fsc_date_dimension as (
     select * from {{ dates }}
 ),
 year_month_end as (
@@ -15,7 +15,7 @@ year_month_end as (
        d.year_number - {{ shift_year }} as fiscal_year_number,
        d.month_end_date
     from
-        date_dimension d
+        fsc_date_dimension d
     where
         d.month_of_year = {{ year_end_month }}
     group by 1,2
@@ -29,7 +29,7 @@ weeks as (
         d.date_day as week_start_date,
         cast({{ dbt.dateadd('day', 6, 'd.date_day') }} as date) as week_end_date
     from
-        date_dimension d
+        fsc_date_dimension d
     where
         d.day_of_week = {{ week_start_day }}
 
@@ -97,7 +97,7 @@ fiscal_year_dates as (
                 order by w.week_start_date
                 ) as fiscal_week_of_year
     from
-        date_dimension d
+        fsc_date_dimension d
         join
         fiscal_year_range m on d.date_day between m.fiscal_year_start_date and m.fiscal_year_end_date
         join

@@ -14,13 +14,6 @@ convert_timezone('{{ source_tz }}', '{{ target_tz }}',
 timestamp(datetime({{ column }}, '{{ target_tz}}'))
 {%- endmacro -%}
 
-{%- macro spark__convert_timezone(column, target_tz, source_tz) -%}
-from_utc_timestamp(
-        to_utc_timestamp({{ column }}, '{{ source_tz }}'),
-        '{{ target_tz }}'
-        )
-{%- endmacro -%}
-
 {% macro postgres__convert_timezone(column, target_tz, source_tz) -%}
 cast(
     cast({{ column }} as {{ dbt.type_timestamp() }})
@@ -34,4 +27,11 @@ cast(
 
 {% macro duckdb__convert_timezone(column, target_tz, source_tz) -%}
 {{ return(dbt_date.postgres__convert_timezone(column, target_tz, source_tz)) }}
+{%- endmacro -%}
+
+{%- macro spark__convert_timezone(column, target_tz, source_tz) -%}
+from_utc_timestamp(
+        to_utc_timestamp({{ column }}, '{{ source_tz }}'),
+        '{{ target_tz }}'
+        )
 {%- endmacro -%}

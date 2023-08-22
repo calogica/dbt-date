@@ -16,3 +16,7 @@ cast(to_char({{ date }}, 'WW') as {{ dbt.type_int() }})
 {%- macro duckdb__week_of_year(date) -%}
 cast(ceil(dayofyear({{ date }}) / 7) as int)
 {%- endmacro %}
+
+{# {%- macro spark__week_of_year(date) -%}
+weekofyear({{ date }})
+{%- endmacro %} #}

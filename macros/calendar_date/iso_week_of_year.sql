@@ -23,3 +23,7 @@ cast({{ dbt_date.date_part(week_type, date) }} as {{ dbt.type_int() }})
 {%- macro duckdb__iso_week_of_year(date) -%}
 {{ return(dbt_date.postgres__iso_week_of_year(date)) }}
 {%- endmacro %}
+
+{%- macro spark__iso_week_of_year(date) -%}
+{{ dbt_date._iso_week_of_year(date, 'week') }}
+{%- endmacro %}
