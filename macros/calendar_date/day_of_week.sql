@@ -86,3 +86,12 @@
 {%- macro duckdb__day_of_week(date, isoweek) -%}
 {{ return(dbt_date.postgres__day_of_week(date, isoweek)) }}
 {%- endmacro %}
+
+
+{%- macro spark__day_of_week(date, isoweek) -%}
+
+    {%- set dow = "dayofweek_iso" if isoweek else "dayofweek" -%}
+
+    {{ dbt_date.date_part(dow, date) }}
+
+{%- endmacro %}
