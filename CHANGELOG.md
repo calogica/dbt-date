@@ -1,3 +1,9 @@
+# dbt-date v0.9.0
+## New Features
+* Add Spark support by @clausherther in https://github.com/calogica/dbt-date/pull/108
+
+**Full Changelog**: https://github.com/calogica/dbt-date/compare/0.8.1...0.9.0
+
 # dbt-date v0.8.0
 ## New Features
 * Add support for dbt-duckdb to the dbt_date package by @jwills in https://github.com/calogica/dbt-date/pull/105
