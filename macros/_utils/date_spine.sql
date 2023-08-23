@@ -55,7 +55,7 @@ all_periods as (
         {{
             dbt.dateadd(
                 datepart,
-                "row_number() over (order by 1) - 1",
+                "(row_number() over (order by 1) - 1)",
                 start_date
             )
         }}
