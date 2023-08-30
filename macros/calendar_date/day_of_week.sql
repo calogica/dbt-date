@@ -95,3 +95,12 @@
     {{ dbt_date.date_part(dow, date) }}
 
 {%- endmacro %}
+
+
+{%- macro databricks__day_of_week(date, isoweek) -%}
+
+    {%- set dow = "dayofweek_iso" if isoweek else "dayofweek" -%}
+
+    {{ dbt_date.date_part(dow, date) }}
+
+{%- endmacro %}

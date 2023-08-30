@@ -35,3 +35,10 @@ from_utc_timestamp(
         '{{ target_tz }}'
         )
 {%- endmacro -%}
+
+{%- macro databricks__convert_timezone(column, target_tz, source_tz) -%}
+from_utc_timestamp(
+        to_utc_timestamp({{ column }}, '{{ source_tz }}'),
+        '{{ target_tz }}'
+        )
+{%- endmacro -%}

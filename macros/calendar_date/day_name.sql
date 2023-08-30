@@ -48,3 +48,8 @@
 {%- set f = 'E' if short else 'EEEE' -%}
     date_format({{ date }}, '{{ f }}')
 {%- endmacro %}
+
+{%- macro databricks__day_name(date, short) -%}
+{%- set f = 'E' if short else 'EEEE' -%}
+    date_format({{ date }}, '{{ f }}')
+{%- endmacro %}

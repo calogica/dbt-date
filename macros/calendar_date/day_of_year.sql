@@ -17,3 +17,8 @@
 {%- macro spark__day_of_year(date) -%}
     dayofyear({{ date }})
 {%- endmacro %}
+
+
+{%- macro databricks__day_of_year(date) -%}
+    dayofyear({{ date }})
+{%- endmacro %}

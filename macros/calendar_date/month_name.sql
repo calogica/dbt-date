@@ -36,3 +36,8 @@
 {%- set f = 'LLL' if short else 'LLLL' -%}
     date_format({{ date }}, '{{ f }}')
 {%- endmacro %}
+
+{%- macro databricks__month_name(date, short) -%}
+{%- set f = 'MMM' if short else 'MMMM' -%}
+    date_format({{ date }}, '{{ f }}')
+{%- endmacro %}

@@ -18,3 +18,6 @@
     unix_timestamp({{ timestamp }})
 {%- endmacro %}
 
+{%- macro databricks__to_unixtimestamp(timestamp) -%}
+    unix_timestamp({{ timestamp }})
+{%- endmacro %}
