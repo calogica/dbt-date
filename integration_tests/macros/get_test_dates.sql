@@ -30,7 +30,9 @@ select
     {{ dbt_date.last_month_name(short=True) }} as last_month_name_short,
     {{ dbt_date.next_month_number() }} as next_month_number,
     {{ dbt_date.next_month_name(short=False) }} as next_month_name,
-    {{ dbt_date.next_month_name(short=True) }} as next_month_name_short
+    {{ dbt_date.next_month_name(short=True) }} as next_month_name_short,
+    {{ modules.datetime.date(1997, 9, 29) }} as datetime_date,
+    {{ modules.datetime.datetime(1997, 9, 29, 6, 14, modules.pytz.timezone(var("dbt_date:time_zone"))) }} as datetime_datetime
 
 union all
 
@@ -64,7 +66,9 @@ select
     {{ dbt_date.last_month_name(short=True) }} as last_month_name_short,
     {{ dbt_date.next_month_number() }} as next_month_number,
     {{ dbt_date.next_month_name(short=False) }} as next_month_name,
-    {{ dbt_date.next_month_name(short=True) }} as next_month_name_short
+    {{ dbt_date.next_month_name(short=True) }} as next_month_name_short,
+    {{ modules.datetime.date(1997, 9, 29) }} as datetime_date,
+    {{ modules.datetime.datetime(1997, 9, 29, 6, 14, modules.pytz.timezone(var("dbt_date:time_zone"))) }} as datetime_datetime
 
 {%- endmacro %}
 
