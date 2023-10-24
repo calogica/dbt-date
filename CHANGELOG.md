@@ -1,3 +1,11 @@
+# dbt-date v0.9.2
+## New Features
+* Add date() and datetime() short hand macros by @gregology in https://github.com/calogica/dbt-date/pull/112
+
+# dbt-date v0.9.1
+## Fixes
+* Fixed dataspine interval by @clausherther in https://github.com/calogica/dbt-date/pull/109
+
 # dbt-date v0.9.0
 ## New Features
 * Add Spark support by @clausherther in https://github.com/calogica/dbt-date/pull/108
