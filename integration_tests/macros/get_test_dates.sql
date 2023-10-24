@@ -31,8 +31,8 @@ select
     {{ dbt_date.next_month_number() }} as next_month_number,
     {{ dbt_date.next_month_name(short=False) }} as next_month_name,
     {{ dbt_date.next_month_name(short=True) }} as next_month_name_short,
-    '{{ modules.datetime.date(1997, 9, 29) }}' as datetime_date,
-    '{{ modules.datetime.datetime(1997, 9, 29, 6, 14, 0, tzinfo=modules.pytz.timezone(var("dbt_date:time_zone"))) }}' as datetime_datetime
+    cast('{{ modules.datetime.date(1997, 9, 29) }}' as date) as datetime_date,
+    cast('{{ modules.datetime.datetime(1997, 9, 29, 6, 14, 0, tzinfo=modules.pytz.timezone(var("dbt_date:time_zone"))) }}' as {{ dbt.type_timestamp() }}) as datetime_datetime
 
 union all
 
@@ -67,8 +67,8 @@ select
     {{ dbt_date.next_month_number() }} as next_month_number,
     {{ dbt_date.next_month_name(short=False) }} as next_month_name,
     {{ dbt_date.next_month_name(short=True) }} as next_month_name_short,
-    '{{ modules.datetime.date(1997, 9, 29) }}' as datetime_date,
-    '{{ modules.datetime.datetime(1997, 9, 29, 6, 14, 0, tzinfo=modules.pytz.timezone(var("dbt_date:time_zone"))) }}' as datetime_datetime
+    cast('{{ modules.datetime.date(1997, 9, 29) }}' as date) as datetime_date,
+    cast('{{ modules.datetime.datetime(1997, 9, 29, 6, 14, 0, tzinfo=modules.pytz.timezone(var("dbt_date:time_zone"))) }}' as {{ dbt.type_timestamp() }}) as datetime_datetime
 
 {%- endmacro %}
 
