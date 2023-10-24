@@ -105,6 +105,11 @@ For example, use `America/New_York` for East Coast Time.
 
 * [get_fiscal_periods](#get_fiscal_periodsdates-year_end_month-week_start_day-shift_year1)
 
+## Utils
+
+* [date](#dateyear-month-day)
+* [datetime](#datetimeyear-month-day-hour0-minute0-second0-microsecond0-tznone)
+
 ## Documentation
 
 ### [get_base_dates](macros/get_base_dates.sql)(`start_date=None, end_date=None, n_dateparts=None, datepart="day"`)
@@ -802,6 +807,30 @@ or, optionally, you can override the default timezone:
 
 ```sql
 {{ dbt_date.yesterday(tz="America/New_York") }} as date_yesterday
+```
+
+### [date](macros/_utils/modules_datetime.sql)(`year`, `month`, `day`)
+
+Reduces the boilerplate syntax required to produce a `date` object. This is not converted to a string to allow pythonic manipulation.
+
+Usage:
+```sql
+{% set date_object = dbt_date.date(1997, 9, 29) %}
+```
+
+### [datetime](macros/_utils/modules_datetime.sql)(`year`, `month`, `day`, `hour=0`, `minute=0`, `second=0`, `microsecond=0`, `tz=None`)
+
+Reduces the boilerplate syntax required to produce a `datetime` object. This is not converted to a string to allow pythonic manipulation.
+
+Usage:
+```sql
+{% set datetime_object = dbt_date.datetime(1997, 9, 29, 6, 14) %}
+```
+
+or, optionally, you can override the default timezone:
+
+```sql
+{% set datetime_object = dbt_date.datetime(1997, 9, 29, 6, 14, tz='America/New_York') %}
 ```
 
 ## Integration Tests (Developers Only)
