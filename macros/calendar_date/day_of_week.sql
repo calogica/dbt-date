@@ -95,3 +95,19 @@
     {{ dbt_date.date_part(dow, date) }}
 
 {%- endmacro %}
+
+
+{%- macro trino__day_of_week(date, isoweek) -%}
+
+    {%- set dow = dbt_date.date_part('day_of_week', date) -%}
+
+    {%- if isoweek -%}
+        {{ dow }}
+    {%- else -%}
+        case
+            when {{ dow }} = 7 then 1
+            else {{ dow }} + 1
+        end
+    {%- endif -%}
+
+{%- endmacro %}

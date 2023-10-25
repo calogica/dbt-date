@@ -17,3 +17,7 @@
 {%- macro spark__day_of_year(date) -%}
     dayofyear({{ date }})
 {%- endmacro %}
+
+{%- macro trino__day_of_year(date) -%}
+    {{ dbt_date.date_part('day_of_year', date) }}
+{%- endmacro %}
