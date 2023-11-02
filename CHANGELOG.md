@@ -1,3 +1,7 @@
+# dbt-date v0.10.0
+## New Features
+* Added Trino support by @damian3031 in https://github.com/calogica/dbt-date/pull/115
+
 # dbt-date v0.9.2
 ## New Features
 * Add date() and datetime() short hand macros by @gregology in https://github.com/calogica/dbt-date/pull/112
