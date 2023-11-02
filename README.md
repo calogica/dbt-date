@@ -43,6 +43,7 @@ This package supports:
 * BigQuery
 * DuckDB
 * Spark
+* Trino
 
 ## Variables
 

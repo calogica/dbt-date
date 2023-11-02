@@ -27,3 +27,7 @@ cast({{ dbt_date.date_part(week_type, date) }} as {{ dbt.type_int() }})
 {%- macro spark__iso_week_of_year(date) -%}
 {{ dbt_date._iso_week_of_year(date, 'week') }}
 {%- endmacro %}
+
+{%- macro trino__iso_week_of_year(date) -%}
+{{ dbt_date._iso_week_of_year(date, 'week') }}
+{%- endmacro %}

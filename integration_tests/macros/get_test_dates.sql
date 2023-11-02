@@ -93,6 +93,12 @@ select
     {{ return([48,49]) }}
 {%- endmacro %}
 
+{% macro trino__get_test_week_of_year() -%}
+    {# weeks_of_year for '2020-11-29' and '2020-12-01', respectively #}
+    {# trino uses ISO year #}
+    {{ return([48,49]) }}
+{%- endmacro %}
+
 
 {% macro get_test_week_start_date() -%}
     {{ return(adapter.dispatch('get_test_week_start_date', 'dbt_date_integration_tests') ()) }}
@@ -107,6 +113,11 @@ select
     {{ return(['2020-11-23', '2020-11-30']) }}
 {%- endmacro %}
 
+{% macro trino__get_test_week_start_date() -%}
+    {# trino does not support non-iso weeks #}
+    {{ return(['2020-11-23', '2020-11-30']) }}
+{%- endmacro %}
+
 
 {% macro get_test_week_end_date() -%}
     {{ return(adapter.dispatch('get_test_week_end_date', 'dbt_date_integration_tests') ()) }}
@@ -118,6 +129,11 @@ select
 
 {% macro spark__get_test_week_end_date() -%}
     {# spark does not support non-iso weeks #}
+    {{ return(['2020-11-29', '2020-12-06']) }}
+{%- endmacro %}
+
+{% macro trino__get_test_week_end_date() -%}
+    {# trino does not support non-iso weeks #}
     {{ return(['2020-11-29', '2020-12-06']) }}
 {%- endmacro %}
 

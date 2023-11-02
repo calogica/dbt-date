@@ -53,3 +53,20 @@
     }}
     {% endif -%}
 {%- endmacro %}
+
+{%- macro trino__from_unixtimestamp(epochs, format) -%}
+    {%- if format == "seconds" -%}
+        cast(from_unixtime({{ epochs }}) AT TIME ZONE 'UTC' as {{ dbt.type_timestamp() }})
+    {%- elif format == "milliseconds" -%}
+        cast(from_unixtime_nanos({{ epochs }} * pow(10, 6)) AT TIME ZONE 'UTC' as {{ dbt.type_timestamp() }})
+    {%- elif format == "microseconds" -%}
+        cast(from_unixtime_nanos({{ epochs }} * pow(10, 3)) AT TIME ZONE 'UTC' as {{ dbt.type_timestamp() }})
+    {%- elif format == "nanoseconds" -%}
+        cast(from_unixtime_nanos({{ epochs }}) AT TIME ZONE 'UTC' as {{ dbt.type_timestamp() }})
+    {%- else -%}
+    {{ exceptions.raise_compiler_error(
+        "value " ~ format ~ " for `format` for from_unixtimestamp is not supported."
+        )
+    }}
+    {% endif -%}
+{%- endmacro %}
