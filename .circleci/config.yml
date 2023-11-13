@@ -169,6 +169,47 @@ jobs:
             dbt build -t trino --project-dir $DBT_PROJECT_DIR
 
 
+  integration-tests-vertica:
+
+    docker:
+      - image: cimg/python:3.11
+      - image: vertica/vertica-ce:11.1.1-0
+
+    resource_class: small
+
+    environment:
+      DBT_PROFILES_DIR: ./integration_tests/ci
+      DBT_PROJECT_DIR: ./integration_tests
+      DBT_VERSION: 1.5.*
+      # VERTICA_MEMDEBUG: 2 # for M1 processor
+      VERTICA_DB_NAME: docker
+      APP_DB_USER: "dbadmin"
+      APP_DB_PASSWORD: ""
+      VMART_ETL_SCRIPT: ""
+      VMART_ETL_SQL: ""
+
+    steps:
+      - checkout
+      - run:
+          name: Install dbt adapter packages
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install "dbt-vertica==$DBT_VERSION"
+      - run: *dbt-deps
+      - setup_remote_docker
+      - run:
+          name: Run Vertica server
+          command: |
+            docker run --name vertica -p 5433:5433 -d vertica/vertica-ce:11.1.1-0
+            timeout 5m bash -c -- 'while ! docker logs vertica 2>&1 | tail -n 1 | grep "Database docker: Startup Succeeded.  All Nodes are UP"; do sleep 2; done'
+      - run:
+          name: "Run Tests - Vertica"
+          command: |
+            . venv/bin/activate
+            dbt build -t vertica --project-dir $DBT_PROJECT_DIR
+
+
 workflows:
   version: 2
   test-all:
