@@ -59,4 +59,14 @@ integration_tests:
       timezone: UTC
       threads: 4
 
+    vertica:
+      type: vertica
+      host: localhost
+      port: 5433
+      database: docker
+      connection_load_balance: false
+      user: admin
+      schema: default
+      threads: 4
+
   target: postgres
