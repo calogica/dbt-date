@@ -20,3 +20,7 @@ cast(ceil(dayofyear({{ date }}) / 7) as int)
 {# {%- macro spark__week_of_year(date) -%}
 weekofyear({{ date }})
 {%- endmacro %} #}
+
+{%- macro vertica__week_of_year(date) -%}
+{{ return(dbt_date.postgres__week_of_year(date)) }}
+{%- endmacro %}

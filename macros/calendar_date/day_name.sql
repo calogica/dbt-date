@@ -53,3 +53,7 @@
 {%- set f = 'a' if short else 'W' -%}
     date_format({{ date }}, '%{{ f }}')
 {%- endmacro %}
+
+{%- macro vertica__day_name(date, short) -%}
+{{ return(dbt_date.postgres__day_name(date, short)) }}
+{%- endmacro %}

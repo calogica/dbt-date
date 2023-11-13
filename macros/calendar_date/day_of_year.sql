@@ -21,3 +21,7 @@
 {%- macro trino__day_of_year(date) -%}
     {{ dbt_date.date_part('day_of_year', date) }}
 {%- endmacro %}
+
+{%- macro vertica__day_of_year(date) -%}
+    {{ dbt_date.date_part('doy', date) }}
+{%- endmacro %}

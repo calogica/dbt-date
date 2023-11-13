@@ -30,3 +30,7 @@ cast({{ dbt.date_trunc(week_type, date) }} as date)
 {%- macro trino__iso_week_start(date) -%}
 {{ dbt_date._iso_week_start(date, 'week') }}
 {%- endmacro %}
+
+{%- macro vertica__iso_week_start(date) -%}
+{{ dbt_date._iso_week_start(date, 'week') }}
+{%- endmacro %}

@@ -20,3 +20,7 @@
 {%- macro duckdb__week_end(date) -%}
 {{ return(dbt_date.postgres__week_end(date)) }}
 {%- endmacro %}
+
+{%- macro vertica__week_end(date) -%}
+{{ return(dbt_date.postgres__week_end(date)) }}
+{%- endmacro %}

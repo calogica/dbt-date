@@ -41,3 +41,7 @@
 {%- set f = 'b' if short else 'M' -%}
     date_format({{ date }}, '%{{ f }}')
 {%- endmacro %}
+
+{%- macro vertica__month_name(date, short) -%}
+{{ return(dbt_date.postgres__month_name(date, short)) }}
+{%- endmacro %}
