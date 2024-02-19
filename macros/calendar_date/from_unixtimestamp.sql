@@ -69,4 +69,16 @@
         )
     }}
     {% endif -%}
+
+{%- endmacro %}
+
+
+{%- macro duckdb__from_unixtimestamp(epochs, format="seconds") -%}
+    {%- if format != "seconds" -%}
+    {{ exceptions.raise_compiler_error(
+        "value " ~ format ~ " for `format` for from_unixtimestamp is not supported."
+        )
+    }}
+    {% endif -%}
+    cast(to_timestamp({{ epochs }}) at time zone 'UTC' as timestamp)
 {%- endmacro %}
