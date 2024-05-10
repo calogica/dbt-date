@@ -1,7 +1,7 @@
 version: 2
 models:
   - name: test_dates
-    tests:
+    data_tests:
         - expression_is_true:
             expression: "prior_date_day = {{ dbt_date.yesterday('date_day') }}"
         - expression_is_true:
