@@ -32,7 +32,7 @@ Include in `packages.yml`
 ```yaml
 packages:
   - package: calogica/dbt_date
-    version: [">=0.9.0", "<0.10.0"]
+    version: [">=0.10.0", "<0.11.0"]
     # <see https://github.com/calogica/dbt-date/releases/latest> for the latest version tag
 ```
 
