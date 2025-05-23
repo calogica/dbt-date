@@ -1,4 +1,5 @@
-## Note: This package is no longer actively supported. 
+## Note: This package is no longer actively supported.
+- There is an [actively supported fork](https://github.com/godatadriven/dbt-date), which is now released to the [dbt hub](https://hub.getdbt.com/godatadriven/dbt_date/latest/).
 
 <p align="center">
 <a href="https://circleci.com/gh/calogica/dbt-date/tree/main">
